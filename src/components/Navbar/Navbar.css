@@ -1,0 +1,26 @@
+.navbar {
+  display: flex;
+  background-color: rgb(65, 180, 223);
+  align-items: center;
+  justify-content: space-around;
+  height: max-content;
+  text-align: center;
+}
+.logo {
+  background-color: rgb(223, 223, 65);
+  width: 20vw;
+  height: 10vh;
+}
+.searchbox {
+  background-color: rgb(223, 118, 65);
+  width: 20vw;
+  height: 7vh;
+}
+.login {
+  background-color: rgb(223, 65, 207);
+  width: 8vw;
+}
+.cart {
+  background-color: rgb(78, 223, 65);
+  width: 20vw;
+}
