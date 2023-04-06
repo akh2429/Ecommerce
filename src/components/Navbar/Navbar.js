@@ -4,7 +4,8 @@ function Navbar() {
             <Navbar>
                 <>Akhilesh Sharma</>
             </Navbar>
-        </>)
+        </>
+    )
 }
 
 export default Navbar
