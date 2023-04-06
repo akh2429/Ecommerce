@@ -1,11 +1,9 @@
 function Navbar() {
     return (
-        <>
-            <Navbar>
-                <>Akhilesh Sharma</>
-            </Navbar>
-        </>
+        <Navbar>
+            Akhilesh Sharma
+        </Navbar>
     )
 }
 
-export default Navbar
+export default Navbar;
