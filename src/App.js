@@ -1,9 +1,10 @@
 import "./app.css"
-import Task from "./component1";
+import Navbar from "./components/Navbar/Navbar";
 function App() {
   return (
     <div className="child" >
-      <Task />
+      <Navbar />
+      Akhilesh
     </div>
   )
 }
