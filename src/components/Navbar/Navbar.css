@@ -2,7 +2,7 @@
   display: flex;
   background-color: rgb(65, 180, 223);
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   height: max-content;
   text-align: center;
 }
@@ -12,15 +12,17 @@
   height: 10vh;
 }
 .searchbox {
-  background-color: rgb(223, 118, 65);
+  background-color: rgb(228, 179, 155);
   width: 20vw;
-  height: 7vh;
+  height: 10vh;
 }
 .login {
-  background-color: rgb(223, 65, 207);
+  background-color: rgb(235, 8, 212);
   width: 8vw;
+  height: 10vh;
 }
 .cart {
   background-color: rgb(78, 223, 65);
   width: 20vw;
+  height: 10vh;
 }
