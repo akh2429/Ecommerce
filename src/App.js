@@ -1,13 +1,15 @@
 import "./app.css"
-import Navbar from "./components/Navbar/Navbar";
-import ProductNav from "./components/ProductNav/ProductNav";
-import Photoslider from "./components/Photoslider/Photoslider";
+import Navbar from "./components/Navbar/Navbar/Navbar";
+import ProductNav from "./components/Navbar/ProductNav/ProductNav";
+import LandingPage from "./components/LandingPage/landingPage";
+import Mobile from "./components/MobilePage/Mobile";
 function App() {
   return (
     <div className="child" >
-      <Navbar />
+      {/* <Navbar />
       <ProductNav />
-      <Photoslider />
+      <LandingPage /> */}
+      <Mobile />
     </div>
   )
 }
