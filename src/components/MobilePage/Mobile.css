@@ -1,0 +1,21 @@
+.mobilePhoto {
+  display: flex;
+  width: 100vw;
+  height: 30vh;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(228, 106, 106);
+}
+.mobileFilters {
+  width: 20vw;
+  background-color: blueviolet;
+  height: 40vh;
+}
+.mobileComponent {
+  width: 80vw;
+  background-color: chartreuse;
+  height: 100vh;
+}
+.contentHolder {
+  display: flex;
+}
