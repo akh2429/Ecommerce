@@ -2,14 +2,16 @@ import "./app.css"
 import Navbar from "./components/Navbar/Navbar/Navbar";
 import ProductNav from "./components/Navbar/ProductNav/ProductNav";
 import LandingPage from "./components/LandingPage/landingPage";
-import Mobile from "./components/MobilePage/Mobile";
+import Mobile from "./components/Productslanding/product";
+import FinalCheckout from "./components/FinalCheckoutpage/finalcheckout";
 function App() {
   return (
     <div className="child" >
-      {/* <Navbar />
+      <Navbar />
       <ProductNav />
-      <LandingPage /> */}
-      <Mobile />
+      <LandingPage />
+      {/* <Mobile />
+      <FinalCheckout /> */}
     </div>
   )
 }

@@ -1,6 +1,6 @@
-import "./Mobile.css"
+import "./product.css"
 import Filters from "./filters/filter";
-import Mobiles from "./MobileComponent/MobileComponent";
+import Mobiles from "./productcomponent/productcomponent";
 function Mobile() {
     return (
         <div>

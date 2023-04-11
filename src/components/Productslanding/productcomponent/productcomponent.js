@@ -1,4 +1,4 @@
-import "./MobileComponent.css"
+import "./productcomponent.css"
 
 function Mobiles() {
     return (
