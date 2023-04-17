@@ -1,6 +1,6 @@
-import "./app.css"
-import Navbar from "./components/Navbar/Navbar/Navbar";
-import ProductNav from "./components/Navbar/ProductNav/ProductNav";
+import "./app.css";
+import ProductNav from "./components/Header/ProductNav/ProductNav";
+import Navbar from "./components/Header/Navbar/Navbar";
 import LandingPage from "./components/LandingPage/landingPage";
 import ProductLanding from "./components/Productslanding/product";
 import FinalCheckout from "./components/FinalCheckoutpage/finalcheckout";
