@@ -1,7 +1,7 @@
 import "./product.css"
 import Filters from "./filters/filter";
 import Mobiles from "./productcomponent/productcomponent";
-function Mobile() {
+function ProductLanding() {
     return (
         <div>
             <div className="mobilePhoto" >Image Here</div>
@@ -11,4 +11,4 @@ function Mobile() {
             </div>
         </div>)
 }
-export default Mobile;
+export default ProductLanding;

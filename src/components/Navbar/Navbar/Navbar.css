@@ -1,28 +1,45 @@
 .navbar {
   display: flex;
-  background-color: rgb(65, 180, 223);
+  background-color: rgb(255, 255, 255);
   align-items: center;
   justify-content: center;
   height: max-content;
   text-align: center;
+  height: 10vh;
+  text-shadow: 0.1px 0.22px black;
+  text-decoration: dotted;
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .logo {
-  background-color: rgb(223, 223, 65);
+  display: flex;
+  background-color: rgb(255, 255, 255);
   width: 20vw;
   height: 10vh;
+  align-items: center;
+  justify-content: center;
 }
 .searchbox {
-  background-color: rgb(228, 179, 155);
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
   width: 20vw;
   height: 10vh;
+  justify-content: center;
 }
 .login {
-  background-color: rgb(235, 8, 212);
-  width: 8vw;
-  height: 10vh;
-}
-.cart {
-  background-color: rgb(78, 223, 65);
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
   width: 20vw;
   height: 10vh;
+  justify-content: center;
+}
+.cart {
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 20vw;
+  height: 10vh;
+  justify-content: center;
 }
