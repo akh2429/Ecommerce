@@ -9,9 +9,9 @@ function App() {
     <div className="child" >
       <Navbar />
       <ProductNav />
-      <LandingPage />
-      {/* <ProductLanding /> */}
-      {/* <FinalCheckout />  */}
+      {/* <LandingPage /> */}
+      <ProductLanding />
+      {/* <FinalCheckout /> */}
     </div>
   )
 }
