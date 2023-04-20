@@ -1,11 +1,11 @@
 import ReactDom from "react-dom"
 import App from "./App"
 import "./index.css"
-
+import { BrowserRouter } from "react-router-dom"
 
 ReactDom.render(
-  <div classname='par' >
+  <BrowserRouter>
     <App></App>
-  </div>,
+  </BrowserRouter>,
   document.getElementById('root'))
 
