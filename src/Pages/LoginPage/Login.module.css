@@ -41,10 +41,12 @@
 @media screen and (max-width: 600px) {
   .inputContainer {
     width: 98vw;
+    font-size: medium;
   }
 }
 @media screen and (max-width: 300px) {
   .button {
     width: 98vw;
+    font-size: small;
   }
 }
