@@ -4,7 +4,7 @@ import style from "./Login.module.css";
 function LoginPage() {
     const [login, setLogin] = useState(true);
     const [loggedUser, setloggedUser] = useState({ email: '', password: '' });
-    const [signUpuser, setsignUpuser] = useState({ email: '', fullname: '', newPassword: '', repeatPassword: '', mobileNumber: '', fullAddress: '', pincode: '' });
+    const [signUpuser, setsignUpuser] = useState({ id: Math.random(), email: '', fullname: '', newPassword: '', repeatPassword: '', mobileNumber: '', fullAddress: '', pincode: '' });
 
     function signUpHandler(e) {
         const { name, value } = e.target;
