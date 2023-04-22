@@ -5,6 +5,7 @@ function LoginPage() {
     const [login, setLogin] = useState(true);
     const [loggedUser, setloggedUser] = useState({ email: '', password: '' });
     const [signUpuser, setsignUpuser] = useState({ id: Math.random(), email: '', fullname: '', newPassword: '', repeatPassword: '', mobileNumber: '', fullAddress: '', pincode: '' });
+    const existingUsers = JSON.parse(localStorage.getItem('userDetails')) || [];
 
     function signUpHandler(e) {
         const { name, value } = e.target;
@@ -16,14 +17,13 @@ function LoginPage() {
     }
     function UserSignup(e) {
         e.preventDefault();
-        const existingUsers = JSON.parse(localStorage.getItem('userDetails')) || [];
         const updatedUsers = [...existingUsers, signUpuser];
         localStorage.setItem('userDetails', JSON.stringify(updatedUsers));
         setsignUpuser({ id: Math.random(), email: '', fullname: '', newPassword: '', repeatPassword: '', mobileNumber: '', fullAddress: '', pincode: '' })
     }
     function UserLogin(e) {
         e.preventDefault();
-        console.log(loggedUser);
+        existingUsers.find((val) => { if (val.email === loggedUser.email && val.newPassword === loggedUser.password) { console.log('Yes') } });
     }
 
     return (<div className={style.FormContainer} >
