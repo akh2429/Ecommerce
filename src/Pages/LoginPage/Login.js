@@ -1,11 +1,13 @@
 import { useState } from "react";
 import style from "./Login.module.css";
+import { useUserContext } from "../../Components/GlobalState/UserContext";
 
 function LoginPage() {
     const [login, setLogin] = useState(true);
     const [loggedUser, setloggedUser] = useState({ email: '', password: '' });
     const [signUpuser, setsignUpuser] = useState({ id: Math.random(), email: '', fullname: '', newPassword: '', repeatPassword: '', mobileNumber: '', fullAddress: '', pincode: '' });
     const existingUsers = JSON.parse(localStorage.getItem('userDetails')) || [];
+    const { user, loginUser } = useUserContext();
 
     function signUpHandler(e) {
         const { name, value } = e.target;
@@ -23,7 +25,8 @@ function LoginPage() {
     }
     function UserLogin(e) {
         e.preventDefault();
-        existingUsers.find((val) => { if (val.email === loggedUser.email && val.newPassword === loggedUser.password) { console.log('Yes') } });
+        existingUsers.find((val) => { if (val.email === loggedUser.email && val.newPassword === loggedUser.password) { loginUser(loggedUser) } });
+        console.log(user)
     }
 
     return (<div className={style.FormContainer} >
