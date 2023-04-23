@@ -6,9 +6,10 @@ import ProductLanding from "./Pages/Productslanding/product";
 import FinalCheckout from "./Pages/FinalCheckoutpage/finalcheckout";
 import { Routes, Route } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage/Login";
+import { UserProvider } from "./Components/GlobalState/UserContext";
 function App() {
   return (
-    <div>
+    <UserProvider>
       <Navbar />
       <ProductNav />
       <Routes>
@@ -17,7 +18,7 @@ function App() {
         {/* <ProductLanding /> */}
         {/* <FinalCheckout /> */}
       </Routes >
-    </div>
+    </UserProvider>
   )
 }
 
