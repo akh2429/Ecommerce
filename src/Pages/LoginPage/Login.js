@@ -1,6 +1,7 @@
 import { useState } from "react";
 import style from "./Login.module.css";
 import { useUserContext } from "../../Components/GlobalState/UserContext";
+import { Navigate } from "react-router-dom";
 
 function LoginPage() {
     const [login, setLogin] = useState(true);
@@ -25,8 +26,7 @@ function LoginPage() {
     }
     function UserLogin(e) {
         e.preventDefault();
-        existingUsers.find((val) => { if (val.email === loggedUser.email && val.newPassword === loggedUser.password) { loginUser(loggedUser) } });
-        console.log(user)
+        existingUsers.find((val) => { if (val.email === loggedUser.email && val.newPassword === loggedUser.password) { loginUser(val) } });
     }
 
     return (<div className={style.FormContainer} >
