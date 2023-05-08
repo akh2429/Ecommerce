@@ -12,13 +12,7 @@
   align-items: center;
   gap: 1rem;
 }
-.signUpFormContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
+
 input {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
