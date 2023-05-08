@@ -8,7 +8,7 @@ function Reducer(state = initialState, action) {
         case "add_user":
             return {
                 ...state,
-                user: { ...state.user, ...action.payload }
+                User: { ...state.User, ...action.payload }
             }
         default:
             return state

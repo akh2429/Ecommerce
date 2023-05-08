@@ -25,8 +25,8 @@ function LoginPage() {
             const result = await axios.get("http://localhost:5050/login");
             const access = result.data.find(val => loggedUser.email === val.email && loggedUser.password === val.newPassword);
             if (access) {
-                // Navigate("/");
                 Dispatch(add_user(access));
+                // Navigate("/");
             }
         }
         catch (error) {
