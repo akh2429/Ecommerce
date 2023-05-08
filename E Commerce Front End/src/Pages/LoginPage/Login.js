@@ -16,7 +16,6 @@ function LoginPage() {
     function loginHandler(e) {
         const { name, value } = e.target;
         setloggedUser({ ...loggedUser, [name]: value });
-        console.log(User);
     };
 
     async function UserLogin(e) {
@@ -26,7 +25,7 @@ function LoginPage() {
             const access = result.data.find(val => loggedUser.email === val.email && loggedUser.password === val.newPassword);
             if (access) {
                 Dispatch(add_user(access));
-                // Navigate("/");
+                Navigate("/");
             }
         }
         catch (error) {
