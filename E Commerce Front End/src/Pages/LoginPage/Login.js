@@ -1,5 +1,4 @@
 import { useState } from "react";
-import style from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { add_user } from "../../Components/Redux/Action";
@@ -35,14 +34,16 @@ function LoginPage() {
 
 
 
-    return (<div className={style.FormContainer} >
-        <form className={style.loginFormContainer} >
-            <input type="email" placeholder="Email Address" onChange={loginHandler} name="email" value={loggedUser.email} />
-            <input type="password" placeholder="Password" onChange={loginHandler} name="password" value={loggedUser.password} />
-            <button className={style.button} onClick={UserLogin} >Login</button>
-            <button className={style.button} onClick={() => Navigate("/signup")} >New User? Signup</button >
-        </form>
-    </div >)
+    return (
+        <div className="bg-zinc-400 h-screen flex items-center justify-center w-screen " >
+            <form className="flex flex-col items-center space-y-4 w-full md:w-1/2 lg:w-1/3 " >
+                <input className="h-8 shadow-inner	rounded text-center  " type="email" placeholder="Email Address" onChange={loginHandler} name="email" value={loggedUser.email} />
+                <input className="h-8 shadow-inner	rounded text-center  " type="password" placeholder="Password" onChange={loginHandler} name="password" value={loggedUser.password} />
+                <button className="bg-slate-600 border-2 shadow-md border-white-600 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 hover:border-double hover:text-lg " onClick={UserLogin} >Login</button>
+                <button className="bg-slate-600 border-2 shadow-md border-white-600 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 hover:border-double hover:text-lg " onClick={() => Navigate("/signup")} >New User? Signup</button >
+            </form>
+        </div >
+    )
 }
 export default LoginPage;
 
