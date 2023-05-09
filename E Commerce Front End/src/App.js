@@ -1,5 +1,4 @@
 import "./app.css";
-import ProductNav from "./Components/Header/ProductNav/ProductNav";
 import Navbar from "./Components/Header/Navbar/Navbar";
 import LandingPage from "./Pages/LandingPage/landingPage";
 import ProductLanding from "./Pages/Productslanding/product";
@@ -13,7 +12,6 @@ function App() {
   return (
     <Provider store={store} >
       <Navbar />
-      <ProductNav />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />

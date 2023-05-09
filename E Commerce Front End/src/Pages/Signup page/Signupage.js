@@ -30,7 +30,7 @@ function Signup() {
     };
 
     return (
-        <div className="bg-slate-300 h-screen w-screen flex items-center justify-center  ">
+        <div className="bg-slate-300 h-screen w-full flex items-center justify-center  ">
             <form onSubmit={UserSignup} className="flex flex-col items-center space-y-4  w-full md:w-1/2 lg:w-1/3"  >
                 <input className="h-8 shadow-inner	rounded text-center " type="email" placeholder="Email Address" onChange={signUpHandler} value={signUpuser.email} name="email" />
                 <input className="h-8 shadow-inner	rounded text-center " type="text" placeholder="Full Name" onChange={signUpHandler} value={signUpuser.fullname} name="fullname" />
