@@ -2,10 +2,14 @@ import { Link } from "react-router-dom";
 import { GiShoppingCart } from 'react-icons/gi';
 import { FiLogIn } from 'react-icons/fi';
 import { AiOutlineFileSearch } from 'react-icons/ai';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { useState } from "react";
 function Navbar() {
 
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
-        <nav className="  flex justify-around text-4xl p-5 bg-yellow-400 font-extrabold shadow-md border-white-600 rounded-sm "  >
+        <nav className="  flex gap-4 justify-around bg-yellow-400  p-5   text-4xl font-extrabold shadow-md border-white-600 rounded-sm "  >
             <div >
                 <Link to="/" className="font-bold text-red-600 shadow-xl border-2 border-white rounded-md p-2 "  >
                     FlipKart
@@ -15,17 +19,33 @@ function Navbar() {
                 <AiOutlineFileSearch className="text-slate-100  text-4xl shadow-md border border-white rounded " />
                 <input className="h-10 shadow-inner	rounded text-center  border border-white " placeholder="Search here..." />
             </div>
-            <div  >
-                <Link className="flex gap-1 " to={"/login"} >
-                    <FiLogIn className="text-slate-100 text-4xl shadow-md border border-white rounded " />
-                    LOGIN
-                </Link >
+            <div className="xl:flex gap-6 lg:hidden md:hidden sm:hidden xs:hidden "   >
+                <div>
+                    <Link className="flex gap-1 " to={"/login"} >
+                        <FiLogIn className="text-slate-100 text-4xl shadow-md border border-white rounded " />
+                        LOGIN
+                    </Link >
+                </div>
+                <div>
+                    <Link className="flex gap-1 " >
+                        <GiShoppingCart className="text-slate-100 text-4xl shadow-md border border-white rounded " />
+                        CART
+                    </Link>
+                </div>
             </div>
-            <div  >
-                <Link className="flex gap-1 " >
-                    <GiShoppingCart className="text-slate-100 text-4xl shadow-md border border-white rounded " />
-                    CART
-                </Link>
+
+            {/* Hanburger Button */}
+            <div className="relative xl:hidden " >
+                <button onClick={() => setIsOpen(!isOpen)} ><GiHamburgerMenu /></button>
+
+
+                {/* Menu */}
+
+                <div className={isOpen ? " absolute" : "hidden"}>
+                    <div className="" >
+                        Akhilesh
+                    </div>
+                </div>
             </div>
         </nav >
     )
