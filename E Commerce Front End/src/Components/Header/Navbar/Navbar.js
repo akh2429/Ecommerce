@@ -3,10 +3,20 @@ import { GiShoppingCart } from 'react-icons/gi';
 import { FiLogIn } from 'react-icons/fi';
 import { AiOutlineFileSearch } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { RiLogoutBoxLine } from 'react-icons/ri';
 import { useState } from "react";
+import Logout from "../../../Pages/LogoutPage/Logout";
+import { useNavigate } from "react-router-dom";
 function Navbar() {
 
     const [isOpen, setIsOpen] = useState(false);
+    const auth = localStorage.getItem("user");
+    const Navigate = useNavigate();
+
+    function logout() {
+        localStorage.clear()
+        Navigate("/login")
+    }
 
     return (
         <nav className="  flex gap-4 justify-around bg-yellow-400 p-5 text-4xl font-extrabold shadow-md 
@@ -30,12 +40,17 @@ function Navbar() {
             {/* Login Cart */}
 
             <div className="flex gap-6 sm:hidden xs:hidden vsm:hidden "   >
-                <div>
+                {auth ?
+                    <Link onClick={logout} className="flex gap-1 " to={"/login"} >
+                        <RiLogoutBoxLine className="text-slate-100 text-4xl shadow-md border border-white rounded lg:text-2xl md:text-xl " />
+                        LOGOUT
+                    </Link >
+                    :
                     <Link className="flex gap-1 " to={"/login"} >
                         <FiLogIn className="text-slate-100 text-4xl shadow-md border border-white rounded lg:text-2xl md:text-xl " />
                         LOGIN
                     </Link >
-                </div>
+                }
                 <div>
                     <Link className="flex gap-1 " >
                         <GiShoppingCart className="text-slate-100 text-4xl shadow-md border border-white rounded lg:text-2xl md:text-xl " />

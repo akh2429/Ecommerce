@@ -1,14 +1,23 @@
 // import style from "./Signup.module.css"
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 
 function Signup() {
     const Navigate = useNavigate();
     const User = useSelector(state => state.User);
     const Dispatch = useDispatch();
+    const auth = localStorage.getItem("user");
+
+    useEffect(() => {
+        if (auth) {
+            Navigate("/login");
+            Swal.fire({ title: 'Already SignedUp', text: 'You have already Signed Up', icon: 'error', confirmButtonText: 'Ok' });
+        }
+    }, [])
 
     const [signUpuser, setsignUpuser] = useState({ "email": '', "fullname": '', "newPassword": '', "repeatPassword": '', "mobileNumber": '', "fullAddress": '', "pincode": '' });
 
@@ -17,11 +26,13 @@ function Signup() {
         try {
             const response = await axios.post("http://localhost:5050/register", signUpuser);
             setsignUpuser({ "email": '', "fullname": '', "newPassword": '', "repeatPassword": '', "mobileNumber": '', "fullAddress": '', "pincode": '' });
+            localStorage.setItem("user", JSON.stringify(response.data));
             Navigate("/login");
         }
         catch (error) {
             console.log(error);
         }
+
     };
 
     function signUpHandler(e) {
