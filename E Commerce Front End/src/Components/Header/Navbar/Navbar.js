@@ -37,16 +37,16 @@ function Navbar() {
             {/* Hanburger Button */}
             <div className="relative xl:hidden " >
                 <button onClick={() => setIsOpen(!isOpen)} ><GiHamburgerMenu /></button>
+            </div>
 
+            {/* Menu */}
 
-                {/* Menu */}
+            <div className={isOpen ? "  absolute right-0  h-screen w-screen top-20 bg-slate-400" : "hidden"}>
+                <div className=" h-56 w-56 bg-slate-400" >
 
-                <div className={isOpen ? "  m-6 p-12 absolute h-56 w-56 bg-slate-400" : "hidden"}>
-                    <div className=" h-56 w-56 bg-slate-400" >
-
-                    </div>
                 </div>
             </div>
+
         </nav >
     )
 }
