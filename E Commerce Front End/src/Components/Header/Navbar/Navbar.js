@@ -41,9 +41,18 @@ function Navbar() {
 
             {/* Menu */}
 
-            <div className={isOpen ? "  absolute right-0  h-screen w-screen top-20 bg-slate-400" : "hidden"}>
-                <div className=" h-56 w-56 bg-slate-400" >
-
+            <div className={isOpen ? "  absolute right-0  h-screen w-screen top-20 bg-yellow-400" : "hidden"}>
+                <div>
+                    <Link className="flex gap-1 " to={"/login"} >
+                        <FiLogIn className="text-slate-100 text-4xl shadow-md border border-white rounded " />
+                        LOGIN
+                    </Link >
+                </div>
+                <div>
+                    <Link className="flex gap-1 " >
+                        <GiShoppingCart className="text-slate-100 text-4xl shadow-md border border-white rounded " />
+                        CART
+                    </Link>
                 </div>
             </div>
 
