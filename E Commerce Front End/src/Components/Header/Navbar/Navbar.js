@@ -9,39 +9,50 @@ function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="  flex gap-4 justify-around bg-yellow-400  p-5   text-4xl font-extrabold shadow-md border-white-600 rounded-sm "  >
+        <nav className="  flex gap-4 justify-around bg-yellow-400 p-5 text-4xl font-extrabold shadow-md 
+        border-white-600 rounded-sm lg:text-2xl md:text-xl sm:text-sm items-center vsm:text-lg flex-nowrap text-shadow ">
+
+            {/* Logo  */}
+
             <div >
-                <Link to="/" className="font-bold text-red-600 shadow-xl border-2 border-white rounded-md p-2 "  >
+                <Link to="/" className="font-bold text-red-600 shadow-md border-2 border-white rounded-md p-2 sm:text-xl ">
                     FlipKart
                 </Link>
             </div>
+
+            {/* Search  */}
+
             <div className="flex gap-1 " >
-                <AiOutlineFileSearch className="text-slate-100  text-4xl shadow-md border border-white rounded " />
-                <input className="h-10 shadow-inner	rounded text-center  border border-white " placeholder="Search here..." />
+                <AiOutlineFileSearch className="text-slate-100  text-4xl shadow-md border border-white rounded lg:text-2xl md:text-xl sm:text-2xl vsm:text-lg " />
+                <input className="h-10 shadow-inner	rounded text-center border border-white lg:text-3xl lg:h-8 lg:w-80 md:text-xl md:h-6 md:w-56 sm:h-6 vsm:h-5 vsm:w-24 vsm:text-xs" placeholder="Search here..." />
             </div>
-            <div className="xl:flex gap-6 lg:hidden md:hidden sm:hidden xs:hidden "   >
+
+            {/* Login Cart */}
+
+            <div className="flex gap-6 sm:hidden xs:hidden vsm:hidden "   >
                 <div>
                     <Link className="flex gap-1 " to={"/login"} >
-                        <FiLogIn className="text-slate-100 text-4xl shadow-md border border-white rounded " />
+                        <FiLogIn className="text-slate-100 text-4xl shadow-md border border-white rounded lg:text-2xl md:text-xl " />
                         LOGIN
                     </Link >
                 </div>
                 <div>
                     <Link className="flex gap-1 " >
-                        <GiShoppingCart className="text-slate-100 text-4xl shadow-md border border-white rounded " />
+                        <GiShoppingCart className="text-slate-100 text-4xl shadow-md border border-white rounded lg:text-2xl md:text-xl " />
                         CART
                     </Link>
                 </div>
             </div>
 
             {/* Hanburger Button */}
-            <div className="relative xl:hidden " >
-                <button onClick={() => setIsOpen(!isOpen)} ><GiHamburgerMenu /></button>
+
+            <div className="relative md:hidden lg:hidden xl:hidden hover:text-xl" >
+                <button className={isOpen ? "text-green-600" : "text-red-600"} onClick={() => setIsOpen(!isOpen)} ><GiHamburgerMenu /></button>
             </div>
 
             {/* Menu */}
 
-            <div className={isOpen ? "  absolute right-0  h-screen w-screen top-20 bg-yellow-400" : "hidden"}>
+            <div className={isOpen ? " flex flex-col justify-center items-center gap-7  absolute right-0  h-44 w-screen top-16 bg-yellow-400" : "hidden"}>
                 <div>
                     <Link className="flex gap-1 " to={"/login"} >
                         <FiLogIn className="text-slate-100 text-4xl shadow-md border border-white rounded " />
