@@ -41,9 +41,9 @@ function Navbar() {
 
                 {/* Menu */}
 
-                <div className={isOpen ? " absolute" : "hidden"}>
-                    <div className="" >
-                        Akhilesh
+                <div className={isOpen ? "  m-6 p-12 absolute h-56 w-56 bg-slate-400" : "hidden"}>
+                    <div className=" h-56 w-56 bg-slate-400" >
+
                     </div>
                 </div>
             </div>
