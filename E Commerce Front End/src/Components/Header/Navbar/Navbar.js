@@ -5,7 +5,6 @@ import { AiOutlineFileSearch } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { RiLogoutBoxLine } from 'react-icons/ri';
 import { useState } from "react";
-import Logout from "../../../Pages/LogoutPage/Logout";
 import { useNavigate } from "react-router-dom";
 function Navbar() {
 

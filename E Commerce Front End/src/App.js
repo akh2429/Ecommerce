@@ -9,7 +9,6 @@ import { Provider } from "react-redux";
 import store from "./Components/Redux/Store";
 import Signup from "./Pages/Signup page/Signupage";
 import PrivateComponent from "./Components/PrivateComponent/privateComponent";
-import Logout from "./Pages/LogoutPage/Logout";
 function App() {
   return (
     <Provider store={store} >
@@ -24,7 +23,6 @@ function App() {
 
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/logout" element={<Logout />} />
       </Routes >
     </Provider>
   )

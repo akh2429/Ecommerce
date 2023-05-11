@@ -11,6 +11,8 @@ app.use(cors({ origin: '*' }));
 app.post("/register", async (req, res) => {
     const user = new users(req.body);
     let result = await user.save();
+    result = result.toObject();
+    delete result.newPassword;
     res.send(result);
 })
 
