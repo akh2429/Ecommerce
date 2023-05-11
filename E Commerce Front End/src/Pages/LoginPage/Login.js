@@ -4,13 +4,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { add_user } from "../../Components/Redux/Action";
 import axios from "axios";
 import Swal from 'sweetalert2';
+import { useEffect } from "react";
 
 function LoginPage() {
     const Navigate = useNavigate();
     const User = useSelector(state => state.User);
     const Dispatch = useDispatch();
-
+    const auth = localStorage.getItem("user")
     const [loggedUser, setloggedUser] = useState({ email: '', newPassword: '' });
+
+    useEffect(() => {
+        if (auth) {
+            Navigate("/")
+        }
+    }, [])
 
 
     function loginHandler(e) {
@@ -28,7 +35,6 @@ function LoginPage() {
                 Navigate("/")
             }
             else {
-
                 Swal.fire({ title: 'Invalid Credentials', text: 'Please Re-Check Email and Password', icon: 'error', confirmButtonText: 'Ok' });
             }
         }
