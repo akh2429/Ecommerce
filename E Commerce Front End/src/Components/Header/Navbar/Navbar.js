@@ -25,7 +25,7 @@ function Navbar() {
 
             <div >
                 <Link to="/" className="font-bold text-red-600 shadow-md border-2 border-white rounded-md p-2 sm:text-xl ">
-                    FlipKart
+                    @e-karT
                 </Link>
             </div>
 

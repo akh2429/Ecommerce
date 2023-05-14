@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const users = require("./DB/User.js");
+const products = require("./DB/Products.js")
 const cors = require("cors");
 app.use(express.json());
 app.use(cors({ origin: '*' }));
@@ -14,7 +15,7 @@ app.post("/register", async (req, res) => {
     result = result.toObject();
     delete result.newPassword;
     res.send(result);
-})
+});
 
 //Login API =======================================================================================================
 
@@ -26,6 +27,7 @@ app.post("/login", async (req, res) => {
         select("-fullAddress").
         select("-pincode");
     user ? res.send(user) : res.send({ result: "No user found" });
-})
+});
+
 
 app.listen(5050, () => console.log("Server Started"));
