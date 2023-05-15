@@ -11,6 +11,8 @@ function Signup() {
     const User = useSelector(state => state.User);
     const Dispatch = useDispatch();
     const auth = localStorage.getItem("user");
+    const [signUpuser, setsignUpuser] = useState({ "email": '', "fullname": '', "newPassword": '', "repeatPassword": '', "mobileNumber": '', "fullAddress": '', "pincode": '' });
+
 
     useEffect(() => {
         if (auth) {
@@ -19,7 +21,6 @@ function Signup() {
         }
     }, [])
 
-    const [signUpuser, setsignUpuser] = useState({ "email": '', "fullname": '', "newPassword": '', "repeatPassword": '', "mobileNumber": '', "fullAddress": '', "pincode": '' });
 
     async function UserSignup(e) {
         e.preventDefault();
