@@ -24,7 +24,7 @@ function Navbar() {
             {/* Logo  */}
 
             <div >
-                <Link to="/" className="font-bold text-red-600 shadow-md border-2 border-white rounded-md p-2 sm:text-xl ">
+                <Link to="/" className="font-bold text-red-600 shadow-md rounded-br-3xl border-2 border-white rounded-md p-2 sm:text-xl ">
                     @e-karT
                 </Link>
             </div>

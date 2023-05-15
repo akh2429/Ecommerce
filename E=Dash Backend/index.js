@@ -29,5 +29,11 @@ app.post("/login", async (req, res) => {
     user ? res.send(user) : res.send({ result: "No user found" });
 });
 
+//LandingPage API =======================================================================================================
+app.post("/landingpage", async (req, res) => {
+    let result = await products.distinct("category");
+    res.send(result);
+})
+
 
 app.listen(5050, () => console.log("Server Started"));
