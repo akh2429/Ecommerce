@@ -24,7 +24,6 @@ function ProductLanding() {
         data()
     }, []);
 
-
     return (
         <div >
             <div className="flex items-center justify-center bg-black shadow-sm" ><img src={a} ></img></div>
