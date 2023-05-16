@@ -8,7 +8,8 @@ const cors = require("cors");
 app.use(express.json());
 app.use(cors({ origin: '*' }));
 
-//Signup API =======================================================================================================
+//Signup API ======================================================================================================
+
 app.post("/register", async (req, res) => {
     const user = new users(req.body);
     let result = await user.save();
@@ -29,11 +30,22 @@ app.post("/login", async (req, res) => {
     user ? res.send(user) : res.send({ result: "No user found" });
 });
 
-//LandingPage API =======================================================================================================
+//LandingPage API ==================================================================================================
+
 app.post("/landingpage", async (req, res) => {
     let result = await products.distinct("category");
     res.send(result);
-})
+});
+
+// Product LandingPage API =========================================================================================
+
+app.post("/productlanding", async (req, res) => {
+    let result = await products.find(req.body);
+    res.send(result);
+});
 
 
 app.listen(5050, () => console.log("Server Started"));
+
+//  =========================================================================================
+
