@@ -67,12 +67,17 @@ function Navbar() {
             {/* Menu */}
 
             <div className={isOpen ? " flex flex-col justify-center items-center gap-7  absolute right-0  h-44 w-screen top-16 bg-yellow-400" : "hidden"}>
-                <div>
+                {auth ?
+                    <Link onClick={logout} className="flex gap-1 " to={"/login"} >
+                        <RiLogoutBoxLine className="text-slate-100 text-4xl shadow-md border border-white rounded lg:text-2xl md:text-xl " />
+                        LOGOUT
+                    </Link >
+                    :
                     <Link className="flex gap-1 " to={"/login"} >
-                        <FiLogIn className="text-slate-100 text-4xl shadow-md border border-white rounded " />
+                        <FiLogIn className="text-slate-100 text-4xl shadow-md border border-white rounded lg:text-2xl md:text-xl " />
                         LOGIN
                     </Link >
-                </div>
+                }
                 <div>
                     <Link className="flex gap-1 " >
                         <GiShoppingCart className="text-slate-100 text-4xl shadow-md border border-white rounded " />

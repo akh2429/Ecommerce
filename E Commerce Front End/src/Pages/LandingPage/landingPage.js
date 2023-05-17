@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Photoslider from "./Photoslider/Photoslider";
-import PN from "./ProductNavigator.js/ProductNavigator";
+import PN from "../../Components/Header/ProductNavigator.js/ProductNavigator";
 import axios from "axios";
 function LandingPage() {
 
@@ -20,9 +20,9 @@ function LandingPage() {
         data();
     }, [])
     return (
-        <div>
-            <Photoslider />
+        <div  >
             <PN data={state} />
+            <Photoslider />
         </div>)
 }
 export default LandingPage;

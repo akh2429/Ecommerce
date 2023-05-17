@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 function Products({ data }) {
-    console.log(data);
     return (
         <div className="flex gap-3 shadow-md flex-wrap items-start justify-start  ">
             {data &&
@@ -24,8 +23,6 @@ function Products({ data }) {
                             More Details
                         </Link>
                     </div>
-
-
                 ))
             }
         </div >
