@@ -25,9 +25,9 @@ function ProductLanding() {
     }, []);
 
     return (
-        <div  >
+        <div className="h-screen w-screen" >
             <div className="flex items-center justify-center bg-black shadow-sm" ><img src={a} ></img></div>
-            <div className="p-7 flex w-full bg-slate-500 h-max  " >
+            <div className="p-7  flex" >
                 <Products data={state} />
             </div>
         </div>
