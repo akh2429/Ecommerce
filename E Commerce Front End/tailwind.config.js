@@ -9,7 +9,9 @@ module.exports = {
       'lg': { 'min': '801px', 'max': '1199px' },
       'xl': { 'min': '1200px' },
     },
-    extend: {},
+    extend: {
+      gap: ['responsive'],
+    },
   },
   plugins: [],
 }

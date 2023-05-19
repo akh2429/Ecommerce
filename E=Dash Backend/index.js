@@ -45,7 +45,13 @@ app.post("/productlanding", async (req, res) => {
 });
 
 
-app.listen(5050, () => console.log("Server Started"));
 
 //  =========================================================================================
 
+app.post("/finalCheckout", async (req, res) => {
+    let result = await products.findById(req.body._id);
+    res.send(result);
+});
+
+
+app.listen(5050, () => console.log("Server Started"));

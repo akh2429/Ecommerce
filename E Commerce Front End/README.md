@@ -1,9 +1,10 @@
-Flipkart clone (E commerce UI)(Front-end)(Backend)(Personal Project)
-*Used react library, Express frame work to build a E commerce website.
-*Build restful API' like Get, Post, Put, Delete integrated with the help of Axios library.
-*Used Mongo Db Atlas cloud database with localhost server.
-*Used Redux Library for storing logged in user data and products data as well.
-*Added functionalities like Cart page where user can add, remove or update the cart items.
-*Used react-router dom to for single-paged UI. Connected over 4,5 pages like Login page, sign-up page,
-*Cart page , landing page, product landing page, product display page.
-*Done protected routing from frontend.
+E commerce (Front end + Back-end)
+*Built an E-commerce website using the React library and Express framework.
+*Integrated RESTful APIs (GET, POST, PUT, DELETE) using the Axios library.
+*Utilized MongoDB Atlas cloud database with a localhost server for data storage.
+*Implemented the Redux library to store logged-in user data and product data.
+*Added a cart page with functionalities for adding, removing, and updating cart items.
+*Utilized the react-router-dom library for single-page UI navigation.
+*Connected multiple pages such as the login page, sign-up page, cart page, landing page, product
+landing page, and product display page.
+*Implemented protected routing from the frontend to ensure secure access to certain pages.
