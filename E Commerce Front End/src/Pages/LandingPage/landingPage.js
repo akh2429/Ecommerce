@@ -20,7 +20,7 @@ function LandingPage() {
         data();
     }, [])
     return (
-        <div  >
+        <div className="bg-emerald-100">
             <PN data={state} />
             <Photoslider />
         </div>)

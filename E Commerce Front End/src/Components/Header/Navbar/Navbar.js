@@ -19,12 +19,12 @@ function Navbar() {
 
     return (
         <nav className="  flex gap-4 justify-around bg-yellow-400 p-5 text-4xl font-extrabold shadow-md 
-        border-white-600 rounded-sm lg:text-2xl md:text-xl sm:text-sm items-center vsm:text-lg flex-nowrap text-shadow ">
+        border-white-600 rounded-sm lg:text-2xl md:text-lg md:p-3 sm:text-sm sm:p-3 items-center vsm:text-sm flex-nowrap text-shadow vsm:gap-0 vsm:p-2  ">
 
             {/* Logo  */}
 
             <div >
-                <Link to="/" className="font-bold text-red-600 shadow-md rounded-br-3xl border-2 border-white rounded-md p-2 sm:text-xl ">
+                <Link to="/" className="font-bold text-red-600 shadow-md rounded-br-3xl border-2 border-white rounded-md p-2 sm:text-sm  vsm:text-xs  ">
                     @e-karT
                 </Link>
             </div>

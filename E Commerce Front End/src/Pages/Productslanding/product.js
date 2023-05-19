@@ -39,12 +39,12 @@ function ProductLanding() {
     }, []);
 
     return (
-        <div className="h-screen w-screen" >
+        <div className="h-screen w-full bg-emerald-100 " >
             <div className="flex items-center justify-center bg-black shadow-sm" ><img src={ImageUrl} ></img></div>
-            <div className="p-7  flex  " >
+            <div div className="p-7  flex  bg-emerald-100" >
                 <Products data={state} />
             </div>
-        </div>
+        </div >
     )
 }
 export default ProductLanding;

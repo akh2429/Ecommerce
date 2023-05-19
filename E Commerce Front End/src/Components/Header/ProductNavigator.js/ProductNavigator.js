@@ -5,10 +5,9 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 
 export default function PN({ data }) {
     const [open, setOpen] = useState(false);
-    console.log(open);
 
     return (
-        <div>
+        <div >
             <div className="flex justify-center items-center border-2 bg-slate-200 flex-col text-lg xl:flex-row xl:text-2xl lg:hidden md:hidden sm:hidden vsm:hidden capitalize font-extrabold">
                 {data.map((val, i) => (
                     <Link

@@ -46,7 +46,7 @@ function LoginPage() {
 
 
     return (
-        <div className="bg-zinc-400 h-screen flex items-center justify-center w-full " >
+        <div className="bg-emerald-100 h-screen flex items-center justify-center w-full " >
             <form className="flex flex-col items-center space-y-4 w-full md:w-1/2 lg:w-1/3 " >
                 <input className="h-8 shadow-inner	rounded text-center  " type="email" placeholder="Email Address" onChange={loginHandler} name="email" value={loggedUser.email} />
                 <input className="h-8 shadow-inner	rounded text-center  " type="password" placeholder="Password" onChange={loginHandler} name="newPassword" value={loggedUser.newPassword} />
