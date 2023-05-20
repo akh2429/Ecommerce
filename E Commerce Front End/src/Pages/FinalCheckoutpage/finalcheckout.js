@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import RenderNestedObject from "./RenderNestedObject";
 
 function FinalCheckout() {
     const [state, setState] = useState();
@@ -32,18 +33,18 @@ function FinalCheckout() {
                         <button className="bg-yellow-400 w-1/2 font-extrabold border border-black shadow-sm" >BuY Now</button>
                     </div>
                 </div>
-                <div className="flex flex-col h-max p-8 gap-2 items-center justify-center w-1/2 font-extrabold text-2xl capitalize border-2 border-black bg-orange-300 rounded-b-2xl sm:w-screen vsm:w-screen " >
+                <div className="flex flex-col h-max p-8 gap-2 items-start justify-start w-1/2 font-extrabold text-2xl capitalize border-2 border-black bg-orange-300 rounded-b-2xl sm:w-screen vsm:w-screen " >
                     <div  >
                         {state?.brand}-
                         {state?.productname}
                     </div>
                     <div>
-                        {state?.price}$/-
+                        Price:- {state?.price}$/-
                     </div>
                     <div className="flex flex-col gap-2  " >
                         {Object.entries(state?.productspec || {}).map(([key, value]) => (
-                            <p key={key} >
-                                {key}:{value}
+                            <p key={key}>
+                                <div className="flex " ><div >{key}</div>:<div>{typeof value === 'object' ? RenderNestedObject(value) : value}</div></div>
                             </p>
                         ))}
                     </div>

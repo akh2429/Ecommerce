@@ -29,13 +29,14 @@ function LoginPage() {
         e.preventDefault();
         try {
             const response = await axios.post("http://localhost:5050/login", loggedUser);
-            if (response.data.fullname) {
+            console.log(response);
+            if (response.data.token) {
                 localStorage.setItem("user", JSON.stringify(response.data));
                 Swal.fire({ title: 'Welcome', text: 'Sucessfully Logged In', icon: 'success', confirmButtonText: 'Ok' });
                 Navigate("/")
             }
             else {
-                Swal.fire({ title: 'Invalid Credentials', text: 'Please Re-Check Email and Password', icon: 'error', confirmButtonText: 'Ok' });
+                Swal.fire({ title: 'Invalid Credentials', text: `${response.data.result}`, icon: 'error', confirmButtonText: 'Ok' });
             }
         }
         catch (error) {
