@@ -84,8 +84,15 @@ app.post("/finalCheckout", async (req, res) => {
 });
 
 // cartPage API ==================================================================================================
+
 app.get("/cart", async (req, res) => {
-    let result = await users.find({});
-    res.send(result);
+    try {
+        const productId = req.query.productId;
+        let result = await products.findById(productId);
+        res.send(result);
+    } catch (error) {
+        res.send(error);
+    }
 });
+
 app.listen(5050, () => console.log("Server Started"));

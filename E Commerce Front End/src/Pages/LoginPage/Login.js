@@ -29,7 +29,6 @@ function LoginPage() {
         e.preventDefault();
         try {
             const response = await axios.post("http://localhost:5050/login", loggedUser);
-            console.log(response);
             if (response.data.token) {
                 localStorage.setItem("user", JSON.stringify(response.data));
                 Swal.fire({ title: 'Welcome', text: 'Sucessfully Logged In', icon: 'success', confirmButtonText: 'Ok' });

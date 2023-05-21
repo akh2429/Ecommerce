@@ -6,7 +6,7 @@ function Products({ data }) {
             {data &&
                 data.map((val) => (
 
-                    <Link key={val.id} to={`/finalCheckout?id=${val._id}`} className=" flex flex-col w-72 rounded-b-3xl p-1 items-center overflow-hidden flex-nowrap border-4 border-gray-950 border-solid gap-2" >
+                    <Link key={val._id} to={`/finalCheckout?id=${val._id}`} className=" flex flex-col w-72 rounded-b-3xl p-1 items-center overflow-hidden flex-nowrap border-4 border-gray-950 border-solid gap-2" >
                         <img
                             className=" top-0 left-0 h-full w-full object-cover z-0"
                             src={val.images}
