@@ -35,6 +35,18 @@ const userSchema = new mongoose.Schema({
         }
     },
     fullAddress: { type: String, required: true },
-    pincode: { type: Number, required: true }
+    pincode: { type: Number, required: true },
+    cart: [
+        {
+            productid: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "products"
+            },
+            quantitiy: {
+                type: Number,
+                default: 1
+            }
+        }
+    ]
 });
 module.exports = mongoose.model("users", userSchema);

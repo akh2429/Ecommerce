@@ -29,7 +29,7 @@ function FinalCheckout() {
                         <img src={state?.images} />
                     </div>
                     <div className="flex justify-center items-center shadow-sm" >
-                        <Link className="flex justify-center items-center bg-yellow-400 font-extrabold w-1/2  border border-black  mr-1 shadow-sm " to={"/cartpage"} ><button  >Add to Cart</button></Link>
+                        <Link to={`/cartpage?id=${state?._id}`} className="flex justify-center items-center bg-yellow-400 font-extrabold w-1/2  border border-black  mr-1 shadow-sm "  ><button  >Add to Cart</button></Link>
                         <Link to={"./paymentpage"} className=" flex justify-center items-center bg-yellow-400 w-1/2 font-extrabold border border-black shadow-sm" ><button  >BuY Now</button></Link>
                     </div>
                 </div>

@@ -76,12 +76,16 @@ app.post("/productlanding", async (req, res) => {
 
 
 
-//  =========================================================================================
+// Product Display page API =========================================================================================
 
 app.post("/finalCheckout", async (req, res) => {
     let result = await products.findById(req.body._id);
     res.send(result);
 });
 
-
+// cartPage API ==================================================================================================
+app.get("/cart", async (req, res) => {
+    let result = await users.find({});
+    res.send(result);
+});
 app.listen(5050, () => console.log("Server Started"));

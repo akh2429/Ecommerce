@@ -1,7 +1,10 @@
 
 const initialState = {
-    User: {}
+    User: {},
+    Cart: {
+        usedId: "",
 
+    }
 };
 function Reducer(state = initialState, action) {
     switch (action.type) {
