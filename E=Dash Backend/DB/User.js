@@ -38,11 +38,12 @@ const userSchema = new mongoose.Schema({
     pincode: { type: Number, required: true },
     cart: [
         {
-            productid: {
+            prodId: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "products"
+                ref: "products",
+                unique: true
             },
-            quantitiy: {
+            qty: {
                 type: Number,
                 default: 1
             }

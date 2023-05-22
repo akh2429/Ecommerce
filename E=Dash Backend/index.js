@@ -95,4 +95,21 @@ app.get("/cart", async (req, res) => {
     }
 });
 
+app.post("/cart", async (req, res) => {
+    const { userId, productId, quantity, action } = req.body;
+    try {
+        const user = await users.findById(userId);
+        if (user && action === "addProduct") {
+            user.cart.push({ prodId: productId, qty: quantity });
+            res.send("Item Saved");
+            await user.save();
+        } else {
+            res.send("user auth Failed")
+        }
+    } catch (error) {
+        res.send(error);
+    }
+
+})
+
 app.listen(5050, () => console.log("Server Started"));

@@ -2,11 +2,17 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import RenderNestedObject from "./RenderNestedObject";
+import jwtDecode from "jwt-decode";
 
 function FinalCheckout() {
     const [state, setState] = useState();
     const { search } = useLocation();
     const id = { _id: new URLSearchParams(search).get("id") };
+    const [state1, setState1] = useState('');
+    const JWtoken = JSON.parse(localStorage.getItem("user"));
+
+
+
 
     useEffect(() => {
         async function data() {
@@ -21,6 +27,16 @@ function FinalCheckout() {
         data();
     }, []);
 
+
+    async function clickHandler(id) {
+        const decoded = jwtDecode(JWtoken.token);
+        const data = { userId: decoded.userId, productId: id, quantity: 1, action: "addProduct" };
+        setState1(data);
+        if (state1.userId && state1.productId) {
+            const response2 = await axios.post("http://localhost:5050/cart", state1);
+        }
+    };
+
     return (
         <div className="flex justify-center  h-screen w-full bg-emerald-100 p-2" >
             <div className="flex h-max w-1/2 lg:w-screen gap-1 md:w-screen  sm:w-screen vsm:w-screen  sm:h-screen sm:flex-col vsm:flex-col   " >
@@ -29,7 +45,7 @@ function FinalCheckout() {
                         <img src={state?.images} />
                     </div>
                     <div className="flex justify-center items-center shadow-sm" >
-                        <Link to={`/cartpage?id=${state?._id}`} className="flex justify-center items-center bg-yellow-400 font-extrabold w-1/2  border border-black  mr-1 shadow-sm "  ><button  >Add to Cart</button></Link>
+                        <button onClick={() => clickHandler(state?._id)} className="flex justify-center items-center bg-yellow-400 font-extrabold w-1/2  border border-black  mr-1 shadow-sm "    >Add to Cart</button>
                         <Link to={"./paymentpage"} className=" flex justify-center items-center bg-yellow-400 w-1/2 font-extrabold border border-black shadow-sm" ><button  >BuY Now</button></Link>
                     </div>
                 </div>
