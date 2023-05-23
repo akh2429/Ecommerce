@@ -34,6 +34,7 @@ function FinalCheckout() {
         const data = { userId: decoded.userId, productId: id, quantity: 1, action: "addProduct" };
         if (data.userId && data.productId) {
             const response2 = await axios.post("http://localhost:5050/cart", data);
+            console.log(response2);
             if (response2.data === "Item Saved") {
                 Swal.fire({ title: 'Sucess', text: `Item Saved to the cart `, icon: 'success', confirmButtonText: 'Ok' });
             } else {

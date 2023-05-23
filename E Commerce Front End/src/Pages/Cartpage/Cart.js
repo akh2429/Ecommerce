@@ -22,6 +22,7 @@ export default function Cart() {
         }
         data();
     }, []);
+    console.log(state)
 
 
     return (

@@ -100,9 +100,15 @@ app.post("/cart", async (req, res) => {
     try {
         const user = await users.findById(userId);
         if (user && action === "addProduct") {
-            user.cart.push({ prodId: productId, qty: quantity });
-            res.send("Item Saved");
-            await user.save();
+            const check = user.cart.find(val => val.prodId === productId)
+            if (check) {
+                res.send("Product Already Exist");
+                return;
+            } else {
+                user.cart.push({ prodId: productId, qty: quantity });
+                res.send("Item Saved");
+                await user.save();
+            }
         } else {
             res.send("user auth Failed")
         }
