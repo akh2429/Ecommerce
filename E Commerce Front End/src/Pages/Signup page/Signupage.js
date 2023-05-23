@@ -28,9 +28,12 @@ function Signup() {
         try {
             const response = await axios.post("http://localhost:5050/register", signUpuser);
             setsignUpuser({ "email": '', "fullname": '', "newPassword": '', "repeatPassword": '', "mobileNumber": '', "fullAddress": '', "pincode": '' });
+            Swal.fire({ title: 'Sucessful', text: 'Sucessfully Signed up', icon: 'success', confirmButtonText: 'Ok' });
             Navigate("/login");
+            console.log(response)
         }
         catch (error) {
+            console.log(error)
             if (error.response.data.message) {
                 const errorMessage = error.response.data.message;
                 const startIndex = errorMessage.indexOf(":") + 1;
