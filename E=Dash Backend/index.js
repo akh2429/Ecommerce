@@ -110,6 +110,17 @@ app.post("/cart", async (req, res) => {
         res.send(error);
     }
 
+});
+
+app.post("/cartdata", async (req, res) => {
+    const { id } = req.body;
+    try {
+        const cart = await users.findById(id).populate("cart.prodId");
+        res.send(cart.cart)
+    } catch (error) {
+        res.send(error);
+    }
+
 })
 
 app.listen(5050, () => console.log("Server Started"));

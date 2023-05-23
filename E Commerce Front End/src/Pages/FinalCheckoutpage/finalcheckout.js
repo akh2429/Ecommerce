@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import RenderNestedObject from "./RenderNestedObject";
 import jwtDecode from "jwt-decode";
+import Swal from "sweetalert2";
 
 function FinalCheckout() {
     const [state, setState] = useState();
@@ -31,9 +32,13 @@ function FinalCheckout() {
     async function clickHandler(id) {
         const decoded = jwtDecode(JWtoken.token);
         const data = { userId: decoded.userId, productId: id, quantity: 1, action: "addProduct" };
-        setState1(data);
-        if (state1.userId && state1.productId) {
-            const response2 = await axios.post("http://localhost:5050/cart", state1);
+        if (data.userId && data.productId) {
+            const response2 = await axios.post("http://localhost:5050/cart", data);
+            if (response2.data === "Item Saved") {
+                Swal.fire({ title: 'Sucess', text: `Item Saved to the cart `, icon: 'success', confirmButtonText: 'Ok' });
+            } else {
+                Swal.fire({ title: 'Error', text: `Please try again`, icon: 'error', confirmButtonText: 'Ok' });
+            }
         }
     };
 
