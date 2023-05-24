@@ -1,15 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { add_user } from "../../Components/Redux/Action";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import { useEffect } from "react";
 
 function LoginPage() {
     const Navigate = useNavigate();
-    const User = useSelector(state => state.User);
-    const Dispatch = useDispatch();
     const auth = localStorage.getItem("user")
     const [loggedUser, setloggedUser] = useState({ email: '', newPassword: '' });
 
@@ -17,7 +14,7 @@ function LoginPage() {
         if (auth) {
             Navigate("/");
         }
-    }, [])
+    }, [auth, Navigate])
 
 
     function loginHandler(e) {

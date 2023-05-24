@@ -21,7 +21,7 @@ function ProductLanding() {
         }, 3000);
         return () => clearInterval(Interval);
     },
-        [])
+        [Images.length])
 
     const ImageUrl = Images[currentImage];
 
@@ -36,11 +36,11 @@ function ProductLanding() {
             }
         }
         data()
-    }, []);
+    }, [cat]);
 
     return (
         <div className="h-screen w-full bg-emerald-100 " >
-            <div className="flex items-center justify-center bg-black shadow-sm" ><img src={ImageUrl} ></img></div>
+            <div className="flex items-center justify-center bg-black shadow-sm" ><img alt="Not available" src={ImageUrl} ></img></div>
             <div div className="p-7  flex  bg-emerald-100" >
                 <Products data={state} />
             </div>

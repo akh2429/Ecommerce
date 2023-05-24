@@ -25,7 +25,7 @@ function FinalCheckout() {
             }
         }
         data();
-    }, []);
+    }, [id]);
 
 
     async function clickHandler(id) {

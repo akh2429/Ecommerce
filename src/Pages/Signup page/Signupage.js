@@ -1,5 +1,4 @@
 // import style from "./Signup.module.css"
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -9,8 +8,6 @@ import Swal from 'sweetalert2';
 function Signup() {
     const [error, setError] = useState("");
     const Navigate = useNavigate();
-    const User = useSelector(state => state.User);
-    const Dispatch = useDispatch();
     const auth = localStorage.getItem("user");
     const [signUpuser, setsignUpuser] = useState({ "email": '', "fullname": '', "newPassword": '', "repeatPassword": '', "mobileNumber": '', "fullAddress": '', "pincode": '' });
 
@@ -20,7 +17,7 @@ function Signup() {
             Navigate("/login");
             Swal.fire({ title: 'Already SignedUp', text: 'You have already Signed Up', icon: 'error', confirmButtonText: 'Ok' });
         }
-    }, [])
+    }, [Navigate, auth]);
 
 
     async function UserSignup(e) {

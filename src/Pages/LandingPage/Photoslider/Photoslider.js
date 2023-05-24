@@ -17,7 +17,7 @@ function Photoslider() {
             setCurrentImage((prevImage) => (prevImage + 1) % images.length);
         }, 4000);
         return () => clearInterval(interval);
-    }, []);
+    }, [images.length]);
 
     const currentImageUrl = images[currentImage];
 

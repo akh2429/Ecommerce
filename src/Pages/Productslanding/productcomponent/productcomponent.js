@@ -10,7 +10,7 @@ function Products({ data }) {
                         <img
                             className=" top-0 left-0 h-full w-full object-cover z-0"
                             src={val.images}
-                            alt="Product Image"
+                            alt="Not available"
                         />
                         <div className="flex justify-between z-10 font-bold bg-amber-400 rounded-b-2xl gap-2 hover:text-lg ">
                             <div className="flex p-1 bg-lime-500 border-r-4  ">

@@ -20,7 +20,7 @@ export default function Cart() {
             }
         }
         fetchData();
-    }, [cartUpdated]);
+    }, [cartUpdated, user]);
 
     async function addHandler(id) {
         const data = { userId: decoded.userId, productId: id, quantity: 1, action: "addProductQuantity" };
