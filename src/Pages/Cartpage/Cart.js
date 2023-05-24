@@ -71,22 +71,22 @@ export default function Cart() {
         <div>
             <div>
                 {state && state.length === 0 ? (
-                    <div className='flex justify-center w-full  h-screen bg-red-600  shadow-md rounded-full items-center p-4' >Items Not available. Please add items first.</div>
+                    <div className='flex justify-center w-full  h-screen   shadow-md rounded-full items-center p-4' >Items Not available. Please add items first.</div>
                 ) : (
                     state && state.map((val) => (
-                        <div key={val._id} className='flex items-center h-40 w-full mx-auto font-extrabold m-5 p-4'>
-                            <div className='flex justify-start w-1/2 bg-yellow-400 h-full items-center p-4 gap-2'>
+                        <div key={val._id} className='flex items-center h-40 w-full mx-auto font-extrabold m-5 p-4 lg:text-2xl md:text-xl sm:text-sm vsm:text-sm '>
+                            <div className='flex justify-start w-1/2 shadow-md  h-full items-center p-4 gap-5 lg:text-2xl md:text-xl sm:text-sm vsm:text-sm '>
                                 <div className='h-full'>
                                     <img alt='Not Available' src={val.prodId.images} className='w-full h-full object-contain' />
                                 </div>
                                 <div>{val.prodId.productname}</div>
+                                <div>Qty: {val.qty}</div>
                             </div>
-                            <div className='flex justify-around w-1/2 bg-red-600 h-full shadow-md rounded-full items-center p-4'>
-                                <div>Quantity: {val.qty}</div>
-                                <div className='flex text-white gap-3'>
-                                    <button className='text-5xl' onClick={() => addHandler(val.prodId._id)}>+</button>
-                                    <button className='text-5xl' onClick={() => DecreaseHandler(val.prodId._id)}>-</button>
-                                    <button className='text-5xl' onClick={() => deleteHandler(val.prodId._id)}>x</button>
+                            <div className='flex justify-around w-1/2  h-full shadow-md  items-center p-4 lg:text-2xl md:text-xl sm:text-sm vsm:text-sm'>
+                                <div className='flex  gap-4'>
+                                    <button className='text-5xl lg:text-2xl md:text-xl sm:text-sm vsm:text-sm text-green-500 border-2 rounded-lg ' onClick={() => addHandler(val.prodId._id)}>+</button>
+                                    <button className='text-5xl lg:text-2xl md:text-xl sm:text-sm vsm:text-sm border-2 rounded-lg ' onClick={() => DecreaseHandler(val.prodId._id)}>-</button>
+                                    <button className='text-5xl lg:text-2xl md:text-xl sm:text-sm vsm:text-sm text-red-600 border-2 rounded-lg' onClick={() => deleteHandler(val.prodId._id)}>x</button>
                                 </div>
                                 <div>{val.prodId.price * val.qty}$/-</div>
                             </div>

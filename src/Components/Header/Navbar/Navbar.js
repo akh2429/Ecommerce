@@ -6,6 +6,8 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { RiLogoutBoxLine } from 'react-icons/ri';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
 function Navbar() {
 
     const [isOpen, setIsOpen] = useState(false);
@@ -13,8 +15,9 @@ function Navbar() {
     const Navigate = useNavigate();
 
     function logout() {
-        localStorage.clear()
-        Navigate("/login")
+        localStorage.clear();
+        Navigate("/login");
+        Swal.fire({ title: 'Success', text: `Successfully Logged Out`, icon: 'success', confirmButtonText: 'Ok' });
     }
 
     return (
@@ -66,7 +69,7 @@ function Navbar() {
 
             {/* Menu */}
 
-            <div className={isOpen ? " flex flex-col justify-center items-center gap-7  absolute right-0  h-44 w-screen top-16 bg-yellow-400" : "hidden"}>
+            <div className={isOpen ? " z-10 flex flex-col justify-center items-center gap-7  absolute right-0  h-44 w-screen top-16 bg-yellow-400" : "hidden"}>
                 {auth ?
                     <Link onClick={logout} className="flex gap-1 " to={"/login"} >
                         <RiLogoutBoxLine className="text-slate-100 text-4xl shadow-md border border-white rounded lg:text-2xl md:text-xl " />
