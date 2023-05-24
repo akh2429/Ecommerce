@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6c5d8698.css",
+    "main.js": "/static/js/main.567bdd07.js",
+    "static/media/Screenshot from 2023-05-17 10-03-42.png": "/static/media/Screenshot from 2023-05-17 10-03-42.2cea37d07454a0a50442.png",
+    "static/media/Screenshot from 2023-05-15 15-52-18.png": "/static/media/Screenshot from 2023-05-15 15-52-18.5874a2206b31172205da.png",
+    "static/media/Mobile_tall_Hero_revision_3000x1200._CB604857279_.jpg": "/static/media/Mobile_tall_Hero_revision_3000x1200._CB604857279_.01e36c7c296884e8bb47.jpg",
+    "static/media/TallHero_3000X1200_Unrec._CB593464763_.jpg": "/static/media/TallHero_3000X1200_Unrec._CB593464763_.bf62a1b34e59cb6f7a3d.jpg",
+    "static/media/Home_mela_Common_Unrec_3000x1200._CB588374333_.jpg": "/static/media/Home_mela_Common_Unrec_3000x1200._CB588374333_.3f7c150d3959c0c38758.jpg",
+    "static/media/Customized_Home_Mela_May_3000x1200._CB588374306_.jpg": "/static/media/Customized_Home_Mela_May_3000x1200._CB588374306_.5291cebac9f1e6856861.jpg",
+    "static/media/UNrec_3000._CB591865002_.jpg": "/static/media/UNrec_3000._CB591865002_.e1db755d5e9e99532ea7.jpg",
+    "static/media/PC-1500-Onecard._CB588373595_.jpg": "/static/media/PC-1500-Onecard._CB588373595_.8375b2973270dfcf61a9.jpg",
+    "index.html": "/index.html",
+    "main.6c5d8698.css.map": "/static/css/main.6c5d8698.css.map",
+    "main.567bdd07.js.map": "/static/js/main.567bdd07.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6c5d8698.css",
+    "static/js/main.567bdd07.js"
+  ]
+}
