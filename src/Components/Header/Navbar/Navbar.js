@@ -79,7 +79,7 @@ function Navbar() {
                     </Link >
                 }
                 <div>
-                    <Link className="flex gap-1 " >
+                    <Link to={"/cartpage"} className="flex gap-1 " >
                         <GiShoppingCart className="text-slate-100 text-4xl shadow-md border border-white rounded " />
                         CART
                     </Link>
