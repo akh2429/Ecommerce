@@ -49,7 +49,7 @@ function FinalCheckout() {
             <div className="flex h-max w-1/2 lg:w-screen gap-1 md:w-screen  sm:w-screen vsm:w-screen  sm:h-screen sm:flex-col vsm:flex-col   " >
                 <div className="flex flex-col h-max gap-5 border-2 border-black mr-1 rounded-b-3xl overflow-hidden  " >
                     <div className="flex object-cover p-2 border-2 border-black m-1 shadow-sm" >
-                        <img alt="Image Not available" src={state?.images} />
+                        <img alt="Not available" src={state?.images} />
                     </div>
                     <div className="flex justify-center items-center shadow-sm" >
                         <button onClick={() => clickHandler(state?._id)} className="flex justify-center items-center bg-yellow-400 font-extrabold w-1/2  border border-black  mr-1 shadow-sm "    >Add to Cart</button>

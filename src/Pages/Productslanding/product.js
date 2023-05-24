@@ -36,7 +36,7 @@ function ProductLanding() {
             }
         }
         data()
-    }, []);
+    }, [search]);
 
     return (
         <div className="h-screen w-full bg-emerald-100 " >
