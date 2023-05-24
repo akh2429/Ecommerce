@@ -30,7 +30,6 @@ function Signup() {
             setsignUpuser({ "email": '', "fullname": '', "newPassword": '', "repeatPassword": '', "mobileNumber": '', "fullAddress": '', "pincode": '' });
             Swal.fire({ title: 'Sucessful', text: 'Sucessfully Signed up', icon: 'success', confirmButtonText: 'Ok' });
             Navigate("/login");
-            console.log(response)
         }
         catch (error) {
             console.log(error)

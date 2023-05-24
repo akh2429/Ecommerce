@@ -15,7 +15,7 @@ function LoginPage() {
 
     useEffect(() => {
         if (auth) {
-            Navigate("/")
+            Navigate("/");
         }
     }, [])
 

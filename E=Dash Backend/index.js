@@ -100,18 +100,52 @@ app.post("/cart", async (req, res) => {
     try {
         const user = await users.findById(userId);
         if (user && action === "addProduct") {
-            const check = user.cart.find(val => val.prodId === productId)
+            const check = user.cart.find(val => val.prodId.toString() === productId);
             if (check) {
                 res.send("Product Already Exist");
                 return;
             } else {
                 user.cart.push({ prodId: productId, qty: quantity });
-                res.send("Item Saved");
                 await user.save();
+                res.send("Item Saved");
             }
-        } else {
-            res.send("user auth Failed")
+        } else if (user && action === "addProductQuantity") {
+            const check = user.cart.find(val => val.prodId.toString() === productId);
+            if (check) {
+                check.qty++;
+                await check.save();
+                await user.save();
+                res.send("Quantity Increased");
+            } else {
+                res.send("Item dont exist");
+            }
+        } else if (user && action === "decreasequantity") {
+            const check = user.cart.find(val => val.prodId.toString() === productId);
+            if (check) {
+                if (check.qty > 1) {
+                    check.qty--;
+                    await check.save();
+                    await user.save();
+                    res.send("Quantity Decreased");
+                } else {
+                    res.send("Quantity Can not be less than one")
+                }
+
+            } else {
+                res.send("Item dont exist");
+            }
         }
+        else if (user && action === "deleteItem") {
+            const checkIndex = user.cart.findIndex(val => val.prodId.toString() === productId);
+            if (checkIndex >= 0) {
+                user.cart.splice(checkIndex, 1);
+                await user.save();
+                res.send("Item Deleted");
+            } else {
+                res.send("Item doesn't exist");
+            }
+        }
+
     } catch (error) {
         res.send(error);
     }

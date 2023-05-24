@@ -9,7 +9,6 @@ function FinalCheckout() {
     const [state, setState] = useState();
     const { search } = useLocation();
     const id = { _id: new URLSearchParams(search).get("id") };
-    const [state1, setState1] = useState('');
     const JWtoken = JSON.parse(localStorage.getItem("user"));
 
 
@@ -34,10 +33,12 @@ function FinalCheckout() {
         const data = { userId: decoded.userId, productId: id, quantity: 1, action: "addProduct" };
         if (data.userId && data.productId) {
             const response2 = await axios.post("http://localhost:5050/cart", data);
-            console.log(response2);
             if (response2.data === "Item Saved") {
                 Swal.fire({ title: 'Sucess', text: `Item Saved to the cart `, icon: 'success', confirmButtonText: 'Ok' });
-            } else {
+            } else if (response2.data === "Product Already Exist") {
+                Swal.fire({ title: 'Error', text: `${response2.data}`, icon: 'error', confirmButtonText: 'Ok' });
+            }
+            else {
                 Swal.fire({ title: 'Error', text: `Please try again`, icon: 'error', confirmButtonText: 'Ok' });
             }
         }
