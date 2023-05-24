@@ -22,7 +22,7 @@ function Signup() {
     async function UserSignup(e) {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5050/register", signUpuser);
+            const response = await axios.post("https://e-commerce-backend-a96p.onrender.com/register", signUpuser);
             if (response.data === "Signed Up sucessfully") {
                 setsignUpuser({ "email": '', "fullname": '', "newPassword": '', "repeatPassword": '', "mobileNumber": '', "fullAddress": '', "pincode": '' });
                 Swal.fire({ title: 'Sucessful', text: 'Sucessfully Signed up', icon: 'success', confirmButtonText: 'Ok' });

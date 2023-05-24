@@ -24,7 +24,7 @@ function LoginPage() {
     async function UserLogin(e) {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5050/login", loggedUser);
+            const response = await axios.post("https://e-commerce-backend-a96p.onrender.com/login", loggedUser);
             if (response.data.token) {
                 localStorage.setItem("user", JSON.stringify(response.data));
                 Swal.fire({ title: 'Welcome', text: 'Sucessfully Logged In', icon: 'success', confirmButtonText: 'Ok' });

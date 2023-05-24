@@ -17,7 +17,7 @@ function FinalCheckout() {
     useEffect(() => {
         async function data() {
             try {
-                let response = await axios.post("http://localhost:5050/finalCheckout", id);
+                let response = await axios.post("https://e-commerce-backend-a96p.onrender.com/finalCheckout", id);
                 setState(response.data);
             }
             catch (error) {
@@ -32,7 +32,7 @@ function FinalCheckout() {
         const decoded = jwtDecode(JWtoken.token);
         const data = { userId: decoded.userId, productId: id, quantity: 1, action: "addProduct" };
         if (data.userId && data.productId) {
-            const response2 = await axios.post("http://localhost:5050/cart", data);
+            const response2 = await axios.post("https://e-commerce-backend-a96p.onrender.com/cart", data);
             if (response2.data === "Item Saved") {
                 Swal.fire({ title: 'Sucess', text: `Item Saved to the cart `, icon: 'success', confirmButtonText: 'Ok' });
             } else if (response2.data === "Product Already Exist") {

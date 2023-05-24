@@ -28,7 +28,7 @@ function ProductLanding() {
         async function data() {
             try {
                 const cat = { category: new URLSearchParams(search).get("category") };
-                let response = await axios.post("http://localhost:5050/productlanding", cat);
+                let response = await axios.post("https://e-commerce-backend-a96p.onrender.com/productlanding", cat);
                 setState(response.data)
             }
             catch (error) {

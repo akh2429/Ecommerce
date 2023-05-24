@@ -10,7 +10,7 @@ function LandingPage() {
     useEffect(() => {
         async function data() {
             try {
-                const response = await axios.post("http://localhost:5050/landingpage");
+                const response = await axios.post("https://e-commerce-backend-a96p.onrender.com/landingpage");
                 setState(response.data);
             }
             catch (error) {
