@@ -1,4 +1,3 @@
-// import style from "./Signup.module.css"
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -24,9 +23,12 @@ function Signup() {
         e.preventDefault();
         try {
             const response = await axios.post("http://localhost:5050/register", signUpuser);
-            setsignUpuser({ "email": '', "fullname": '', "newPassword": '', "repeatPassword": '', "mobileNumber": '', "fullAddress": '', "pincode": '' });
-            Swal.fire({ title: 'Sucessful', text: 'Sucessfully Signed up', icon: 'success', confirmButtonText: 'Ok' });
-            Navigate("/login");
+            if (response.data === "Signed Up sucessfully") {
+                setsignUpuser({ "email": '', "fullname": '', "newPassword": '', "repeatPassword": '', "mobileNumber": '', "fullAddress": '', "pincode": '' });
+                Swal.fire({ title: 'Sucessful', text: 'Sucessfully Signed up', icon: 'success', confirmButtonText: 'Ok' });
+                Navigate("/login");
+            }
+
         }
         catch (error) {
             console.log(error)

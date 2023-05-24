@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import RenderNestedObject from "./RenderNestedObject";
 import jwtDecode from "jwt-decode";
@@ -8,11 +8,11 @@ import Swal from "sweetalert2";
 function FinalCheckout() {
     const [state, setState] = useState();
     const { search } = useLocation();
-    const id = { _id: new URLSearchParams(search).get("id") };
     const JWtoken = JSON.parse(localStorage.getItem("user"));
 
-
-
+    const id = useMemo(() => {
+        return { _id: new URLSearchParams(search).get("id") };
+    }, [search]);
 
     useEffect(() => {
         async function data() {
@@ -49,7 +49,7 @@ function FinalCheckout() {
             <div className="flex h-max w-1/2 lg:w-screen gap-1 md:w-screen  sm:w-screen vsm:w-screen  sm:h-screen sm:flex-col vsm:flex-col   " >
                 <div className="flex flex-col h-max gap-5 border-2 border-black mr-1 rounded-b-3xl overflow-hidden  " >
                     <div className="flex object-cover p-2 border-2 border-black m-1 shadow-sm" >
-                        <img src={state?.images} />
+                        <img alt="Image Not available" src={state?.images} />
                     </div>
                     <div className="flex justify-center items-center shadow-sm" >
                         <button onClick={() => clickHandler(state?._id)} className="flex justify-center items-center bg-yellow-400 font-extrabold w-1/2  border border-black  mr-1 shadow-sm "    >Add to Cart</button>

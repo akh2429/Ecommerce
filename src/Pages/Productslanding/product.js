@@ -9,7 +9,6 @@ import axios from "axios";
 
 function ProductLanding() {
     const { search } = useLocation();
-    const cat = { category: new URLSearchParams(search).get("category") };
     const [state, setState] = useState("");
     const [currentImage, setCurrentImage] = useState(0);
 
@@ -28,6 +27,7 @@ function ProductLanding() {
     useEffect(() => {
         async function data() {
             try {
+                const cat = { category: new URLSearchParams(search).get("category") };
                 let response = await axios.post("http://localhost:5050/productlanding", cat);
                 setState(response.data)
             }
@@ -36,7 +36,7 @@ function ProductLanding() {
             }
         }
         data()
-    }, [cat]);
+    }, []);
 
     return (
         <div className="h-screen w-full bg-emerald-100 " >

@@ -25,7 +25,7 @@ function Photoslider() {
         <div
             className="w-screen h-full  ">
 
-            <img
+            <img alt="Not Available"
                 src={
                     currentImageUrl
                 }

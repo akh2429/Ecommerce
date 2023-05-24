@@ -1,14 +1,18 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import jwtDecode from "jwt-decode";
 import Swal from "sweetalert2";
 
 export default function Cart() {
-    const JWtoken = JSON.parse(localStorage.getItem("user"));
-    const decoded = jwtDecode(JWtoken.token);
-    const user = { id: decoded.userId };
     const [state, setState] = useState();
     const [cartUpdated, setCartUpdated] = useState(false);
+
+
+    const user = useMemo(() => {
+        const JWtoken = JSON.parse(localStorage.getItem("user"));
+        const decoded = jwtDecode(JWtoken.token);
+        return { id: decoded.userId };
+    }, []);
 
     useEffect(() => {
         async function fetchData() {
@@ -23,6 +27,8 @@ export default function Cart() {
     }, [cartUpdated, user]);
 
     async function addHandler(id) {
+        const JWtoken = JSON.parse(localStorage.getItem("user"));
+        const decoded = jwtDecode(JWtoken.token);
         const data = { userId: decoded.userId, productId: id, quantity: 1, action: "addProductQuantity" };
         if (data.userId && data.productId) {
             const response2 = await axios.post("http://localhost:5050/cart", data);
@@ -34,6 +40,8 @@ export default function Cart() {
     }
 
     async function DecreaseHandler(id) {
+        const JWtoken = JSON.parse(localStorage.getItem("user"));
+        const decoded = jwtDecode(JWtoken.token);
         const data = { userId: decoded.userId, productId: id, quantity: 1, action: "decreasequantity" };
         if (data.userId && data.productId) {
             const response2 = await axios.post("http://localhost:5050/cart", data);
@@ -47,6 +55,8 @@ export default function Cart() {
     }
 
     async function deleteHandler(id) {
+        const JWtoken = JSON.parse(localStorage.getItem("user"));
+        const decoded = jwtDecode(JWtoken.token);
         const data = { userId: decoded.userId, productId: id, quantity: 1, action: "deleteItem" };
         if (data.userId && data.productId) {
             const response2 = await axios.post("http://localhost:5050/cart", data);
@@ -67,7 +77,7 @@ export default function Cart() {
                         <div key={val._id} className='flex items-center h-40 w-full mx-auto font-extrabold m-5 p-4'>
                             <div className='flex justify-start w-1/2 bg-yellow-400 h-full items-center p-4 gap-2'>
                                 <div className='h-full'>
-                                    <img src={val.prodId.images} className='w-full h-full object-contain' />
+                                    <img alt='Not Available' src={val.prodId.images} className='w-full h-full object-contain' />
                                 </div>
                                 <div>{val.prodId.productname}</div>
                             </div>
