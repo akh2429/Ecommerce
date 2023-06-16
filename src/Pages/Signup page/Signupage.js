@@ -53,6 +53,7 @@ function Signup() {
     return (
         <div className="bg-emerald-100 h-screen w-full flex items-center justify-center  ">
             <form onSubmit={UserSignup} className="flex flex-col items-center space-y-4  w-full md:w-1/2 lg:w-1/3"  >
+                <span className="text-5xl font-extrabold md:text-sm lg:text-lg sm:text-sm vsm:text-xs " >Welcome to the Signup page</span>
                 <input className="h-8 shadow-inner	rounded text-center " type="email" placeholder="Email Address" onChange={signUpHandler} value={signUpuser.email} name="email" />
                 <input className="h-8 shadow-inner	rounded text-center " type="text" placeholder="Full Name" onChange={signUpHandler} value={signUpuser.fullname} name="fullname" />
                 <input className="h-8 shadow-inner	rounded text-center " type="password" placeholder="Set New Password" onChange={signUpHandler} value={signUpuser.newPassword} name="newPassword" />

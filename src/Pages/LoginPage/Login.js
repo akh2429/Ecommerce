@@ -44,6 +44,7 @@ function LoginPage() {
     return (
         <div className="bg-emerald-100 h-screen flex items-center justify-center w-fullpm">
             <form className="flex flex-col items-center space-y-4 w-full md:w-1/2 lg:w-1/3 " >
+                <span className="text-5xl font-extrabold md:text-sm lg:text-lg sm:text-sm vsm:text-xs " >Welcome to the Login page</span>
                 <input className="h-8 shadow-inner	rounded text-center  " type="email" placeholder="Email Address" onChange={loginHandler} name="email" value={loggedUser.email} />
                 <input className="h-8 shadow-inner	rounded text-center  " type="password" placeholder="Password" onChange={loginHandler} name="newPassword" value={loggedUser.newPassword} />
                 <button className="bg-slate-600 border-2 shadow-md border-white-600 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 hover:border-double hover:text-lg " onClick={UserLogin} >Login</button>
