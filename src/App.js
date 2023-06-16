@@ -10,12 +10,12 @@ import store from "./Components/Redux/Store";
 import Signup from "./Pages/Signup page/Signupage";
 import PrivateComponent from "./Components/PrivateComponent/privateComponent";
 import Cart from "./Pages/Cartpage/Cart";
+import Footer from "./Components/Footer/Footer";
 function App() {
   return (
     <Provider store={store} >
       <Navbar />
       <Routes>
-
         <Route element={<PrivateComponent />} >
           <Route path="/" element={<LandingPage />} />
           <Route path="/finalCheckout" element={<FinalCheckout />} />
@@ -26,6 +26,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes >
+      <Footer />
     </Provider>
   )
 }
