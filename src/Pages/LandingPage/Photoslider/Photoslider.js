@@ -23,7 +23,7 @@ function Photoslider() {
 
     return (
         <div
-            className="w-screen h-full  ">
+            className="w-full h-full  ">
 
             <img alt="Not Available"
                 src={
