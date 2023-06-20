@@ -23,13 +23,13 @@ const Footer = () => {
                         <div className="footer-section">
                             <h2 className="text-white font-bold text-lg mb-4">Social Media</h2>
                             <div className="flex space-x-4">
-                                <a href="https://www.twitter.com" className="text-gray-400 hover:text-white">
+                                <a href="https://www.twitter.com" className="text-gray-400 hover:text-white transition-colors duration-300">
                                     <FaTwitter size={24} />
                                 </a>
-                                <a href="https://www.facebook.com" className="text-gray-400 hover:text-white">
+                                <a href="https://www.facebook.com" className="text-gray-400 hover:text-white transition-colors duration-300">
                                     <FaFacebook size={24} />
                                 </a>
-                                <a href="https://www.instagram.com" className="text-gray-400 hover:text-white">
+                                <a href="https://www.instagram.com" className="text-gray-400 hover:text-white transition-colors duration-300">
                                     <FaInstagram size={24} />
                                 </a>
                             </div>
