@@ -38,7 +38,7 @@ const Footer = () => {
                 </div>
                 <hr className="border-gray-700 my-6" />
                 <div className="text-center text-gray-400">
-                    &copy; {new Date().getFullYear()} Your Website Name. All rights reserved.
+                    &copy; {new Date().getFullYear()} @e-kart. All rights reserved.
                 </div>
             </div>
         </footer>
