@@ -1,57 +1,104 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import axios from "axios";
-import Swal from 'sweetalert2';
-import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 function LoginPage() {
-    const Navigate = useNavigate();
-    const auth = localStorage.getItem("user")
-    const [loggedUser, setloggedUser] = useState({ email: '', newPassword: '' });
+    const navigate = useNavigate();
+    const auth = localStorage.getItem("user");
+    const [loading, setLoading] = useState(false); // State variable for tracking loading state
 
     useEffect(() => {
         if (auth) {
-            Navigate("/");
+            navigate("/");
         }
-    }, [auth, Navigate])
+    }, [auth, navigate]);
 
-
-    function loginHandler(e) {
-        const { name, value } = e.target;
-        setloggedUser({ ...loggedUser, [name]: value });
-    };
-
-    async function UserLogin(e) {
-        e.preventDefault();
-        try {
-            const response = await axios.post("https://e-commerce-backend-a96p.onrender.com/login", loggedUser);
-            if (response.data.token) {
-                localStorage.setItem("user", JSON.stringify(response.data));
-                Swal.fire({ title: 'Welcome', text: 'Sucessfully Logged In', icon: 'success', confirmButtonText: 'Ok' });
-                Navigate("/")
+    const formik = useFormik({
+        initialValues: {
+            email: "",
+            newPassword: "",
+        },
+        validationSchema: Yup.object({
+            email: Yup.string().email("Invalid email address").required("Required"),
+            newPassword: Yup.string().required("Required"),
+        }),
+        onSubmit: async (values) => {
+            try {
+                setLoading(true); // Start the loading state
+                const response = await axios.post(
+                    "https://e-commerce-backend-a96p.onrender.com/login",
+                    values
+                );
+                if (response.data.token) {
+                    localStorage.setItem("user", JSON.stringify(response.data));
+                    Swal.fire({
+                        title: "Welcome",
+                        text: "Successfully Logged In",
+                        icon: "success",
+                        confirmButtonText: "Ok",
+                    });
+                    navigate("/");
+                } else {
+                    Swal.fire({
+                        title: "Invalid Credentials",
+                        text: `${response.data.result}`,
+                        icon: "error",
+                        confirmButtonText: "Ok",
+                    });
+                }
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setLoading(false); // End the loading state
             }
-            else {
-                Swal.fire({ title: 'Invalid Credentials', text: `${response.data.result}`, icon: 'error', confirmButtonText: 'Ok' });
-            }
-        }
-        catch (error) {
-            console.log(error);
-        }
-    };
-
-
+        },
+    });
 
     return (
-        <div className="bg-emerald-100 h-screen flex items-center justify-center w-fullpm">
-            <form className="flex flex-col items-center space-y-4 w-full md:w-1/2 lg:w-1/3 " >
-                <span className="text-5xl font-extrabold md:text-sm lg:text-lg sm:text-sm vsm:text-xs " >Welcome to the Login page</span>
-                <input className="h-8 shadow-inner	rounded text-center  " type="email" placeholder="Email Address" onChange={loginHandler} name="email" value={loggedUser.email} />
-                <input className="h-8 shadow-inner	rounded text-center  " type="password" placeholder="Password" onChange={loginHandler} name="newPassword" value={loggedUser.newPassword} />
-                <button className="bg-slate-600 border-2 shadow-md border-white-600 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 hover:border-double hover:text-lg " onClick={UserLogin} >Login</button>
-                <button className="bg-slate-600 border-2 shadow-md border-white-600 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 hover:border-double hover:text-lg " onClick={() => Navigate("/signup")} >New User? Signup</button >
+        <div className="bg-emerald-100 h-screen flex items-center justify-center w-full">
+            <form className="flex flex-col items-center space-y-4 w-full md:w-1/2 lg:w-1/3" onSubmit={formik.handleSubmit}>
+                <span className="text-5xl font-extrabold md:text-sm lg:text-lg sm:text-sm vsm:text-xs">
+                    Welcome to the Login page
+                </span>
+                <input
+                    className="h-8 shadow-inner rounded text-center"
+                    type="email"
+                    placeholder="Email Address"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.email}
+                    name="email"
+                />
+                {formik.touched.email && formik.errors.email && <p className="text-red-500">{formik.errors.email}</p>}
+                <input
+                    className="h-8 shadow-inner rounded text-center"
+                    type="password"
+                    placeholder="Password"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.newPassword}
+                    name="newPassword"
+                />
+                {formik.touched.newPassword && formik.errors.newPassword && <p className="text-red-500">{formik.errors.newPassword}</p>}
+                <button
+                    className="bg-slate-600 border-2 shadow-md border-white-600 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 hover:border-double hover:text-lg"
+                    type="submit"
+                    disabled={loading}
+                >
+                    {loading ? "Loading..." : "Login"}
+                </button>
+                <button
+                    className="bg-slate-600 border-2 shadow-md border-white-600 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 hover:border-double hover:text-lg"
+                    onClick={() => navigate("/signup")}
+                >
+                    New User? Signup
+                </button>
             </form>
-        </div >
-    )
+        </div>
+    );
 }
-export default LoginPage;
 
+export default LoginPage;

@@ -1,15 +1,13 @@
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import Swal from 'sweetalert2';
 
-
 function Signup() {
-    const [error, setError] = useState("");
     const Navigate = useNavigate();
     const auth = localStorage.getItem("user");
-    const [signUpuser, setsignUpuser] = useState({ "email": '', "fullname": '', "newPassword": '', "repeatPassword": '', "mobileNumber": '', "fullAddress": '', "pincode": '' });
-
 
     useEffect(() => {
         if (auth) {
@@ -18,54 +16,128 @@ function Signup() {
         }
     }, [Navigate, auth]);
 
-
-    async function UserSignup(e) {
-        e.preventDefault();
-        try {
-            const response = await axios.post("https://e-commerce-backend-a96p.onrender.com/register", signUpuser);
-            if (response.data === "Signed Up sucessfully") {
-                setsignUpuser({ "email": '', "fullname": '', "newPassword": '', "repeatPassword": '', "mobileNumber": '', "fullAddress": '', "pincode": '' });
-                Swal.fire({ title: 'Sucessful', text: 'Sucessfully Signed up', icon: 'success', confirmButtonText: 'Ok' });
-                Navigate("/login");
+    const formik = useFormik({
+        initialValues: {
+            email: "",
+            fullname: "",
+            newPassword: "",
+            repeatPassword: "",
+            mobileNumber: "",
+            fullAddress: "",
+            pincode: "",
+        },
+        validationSchema: Yup.object({
+            email: Yup.string().email("Invalid email address").required("Email is required"),
+            fullname: Yup.string().required("Full Name is required"),
+            newPassword: Yup.string().required("New Password is required"),
+            repeatPassword: Yup.string()
+                .oneOf([Yup.ref("newPassword"), null], "Passwords must match")
+                .required("Confirm Password is required"),
+            mobileNumber: Yup.string().required("Mobile Number is required"),
+            fullAddress: Yup.string().required("Full Address is required"),
+            pincode: Yup.string().required("Pincode is required"),
+        }),
+        onSubmit: async (values) => {
+            try {
+                const response = await axios.post("https://e-commerce-backend-a96p.onrender.com/register", values);
+                if (response.data === "Signed Up sucessfully") {
+                    formik.resetForm();
+                    Swal.fire({ title: 'Sucessful', text: 'Successfully Signed up', icon: 'success', confirmButtonText: 'Ok' });
+                    Navigate("/login");
+                }
+            } catch (error) {
+                console.log(error);
+                if (error.response.data.message) {
+                    const errorMessage = error.response.data.message;
+                    const startIndex = errorMessage.indexOf(":") + 1;
+                    const formattedErrorMessage = errorMessage.substring(startIndex).trim();
+                    formik.setFieldError("email", formattedErrorMessage);
+                } else if (error.response.data.ConfirmPassword) {
+                    formik.setFieldError("repeatPassword", error.response.data.ConfirmPassword);
+                }
             }
-
-        }
-        catch (error) {
-            console.log(error)
-            if (error.response.data.message) {
-                const errorMessage = error.response.data.message;
-                const startIndex = errorMessage.indexOf(":") + 1;
-                const formattedErrorMessage = errorMessage.substring(startIndex).trim();
-                setError(formattedErrorMessage);
-            } if (error.response.data.ConfirmPassword) {
-                setError(error.response.data.ConfirmPassword)
-            }
-        }
-    };
-
-    function signUpHandler(e) {
-        const { name, value } = e.target;
-        setError("");
-        setsignUpuser({ ...signUpuser, [name]: value });
-    }
-
+        },
+    });
 
     return (
-        <div className="bg-emerald-100 h-screen w-full flex items-center justify-center  ">
-            <form onSubmit={UserSignup} className="flex flex-col items-center space-y-4  w-full md:w-1/2 lg:w-1/3"  >
-                <span className="text-5xl font-extrabold md:text-sm lg:text-lg sm:text-sm vsm:text-xs " >Welcome to the Signup page</span>
-                <input className="h-8 shadow-inner	rounded text-center " type="email" placeholder="Email Address" onChange={signUpHandler} value={signUpuser.email} name="email" />
-                <input className="h-8 shadow-inner	rounded text-center " type="text" placeholder="Full Name" onChange={signUpHandler} value={signUpuser.fullname} name="fullname" />
-                <input className="h-8 shadow-inner	rounded text-center " type="password" placeholder="Set New Password" onChange={signUpHandler} value={signUpuser.newPassword} name="newPassword" />
-                <input className="h-8 shadow-inner	rounded text-center " type="password" placeholder="Confirm Password" onChange={signUpHandler} value={signUpuser.repeatPassword} name="repeatPassword" />
-                <input className="h-8 shadow-inner	rounded text-center " type="number" placeholder="Mobile Number" onChange={signUpHandler} value={signUpuser.mobileNumber} name="mobileNumber" />
-                <input className="h-8 shadow-inner	rounded text-center " type="text" placeholder="Full Address" onChange={signUpHandler} value={signUpuser.fullAddress} name="fullAddress" />
-                <input className="h-8 shadow-inner	rounded text-center " type="number" placeholder="Pincode" onChange={signUpHandler} value={signUpuser.pincode} name="pincode" />
-                <button className="bg-slate-600 border-2 shadow-md border-white-600 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 hover:border-double hover:text-lg " type="submit">Signup</button>
-                <button className="bg-slate-600 border-2 shadow-md border-white-600 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 hover:border-double hover:text-lg" onClick={() => Navigate("/login")} > Back to Login</button >
-                {error && <p className="text-red-500">{error}</p>}
-            </form >
-        </div >
-    )
+        <div className="bg-emerald-100 h-screen w-full flex items-center justify-center">
+            <form onSubmit={formik.handleSubmit} className="flex flex-col items-center space-y-4 w-full md:w-1/2 lg:w-1/3">
+                <span className="text-5xl font-extrabold md:text-sm lg:text-lg sm:text-sm vsm:text-xs">Welcome to the Signup page</span>
+                <input
+                    className="h-8 shadow-inner rounded text-center"
+                    type="email"
+                    placeholder="Email Address"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.email}
+                    name="email"
+                />
+                {formik.touched.email && formik.errors.email && <p className="text-red-500">{formik.errors.email}</p>}
+                <input
+                    className="h-8 shadow-inner rounded text-center"
+                    type="text"
+                    placeholder="Full Name"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.fullname}
+                    name="fullname"
+                />
+                {formik.touched.fullname && formik.errors.fullname && <p className="text-red-500">{formik.errors.fullname}</p>}
+                <input
+                    className="h-8 shadow-inner rounded text-center"
+                    type="password"
+                    placeholder="Set New Password"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.newPassword}
+                    name="newPassword"
+                />
+                {formik.touched.newPassword && formik.errors.newPassword && <p className="text-red-500">{formik.errors.newPassword}</p>}
+                <input
+                    className="h-8 shadow-inner rounded text-center"
+                    type="password"
+                    placeholder="Confirm Password"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.repeatPassword}
+                    name="repeatPassword"
+                />
+                {formik.touched.repeatPassword && formik.errors.repeatPassword && <p className="text-red-500">{formik.errors.repeatPassword}</p>}
+                <input
+                    className="h-8 shadow-inner rounded text-center"
+                    type="number"
+                    placeholder="Mobile Number"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.mobileNumber}
+                    name="mobileNumber"
+                />
+                {formik.touched.mobileNumber && formik.errors.mobileNumber && <p className="text-red-500">{formik.errors.mobileNumber}</p>}
+                <input
+                    className="h-8 shadow-inner rounded text-center"
+                    type="text"
+                    placeholder="Full Address"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.fullAddress}
+                    name="fullAddress"
+                />
+                {formik.touched.fullAddress && formik.errors.fullAddress && <p className="text-red-500">{formik.errors.fullAddress}</p>}
+                <input
+                    className="h-8 shadow-inner rounded text-center"
+                    type="number"
+                    placeholder="Pincode"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.pincode}
+                    name="pincode"
+                />
+                {formik.touched.pincode && formik.errors.pincode && <p className="text-red-500">{formik.errors.pincode}</p>}
+                <button className="bg-slate-600 border-2 shadow-md border-white-600 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 hover:border-double hover:text-lg" type="submit">Signup</button>
+                <button className="bg-slate-600 border-2 shadow-md border-white-600 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 hover:border-double hover:text-lg" onClick={() => Navigate("/login")}> Back to Login</button>
+            </form>
+        </div>
+    );
 }
+
 export default Signup;
