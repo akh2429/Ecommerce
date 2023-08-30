@@ -17,7 +17,7 @@ export default function Cart() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.post("https://e-commerce-backend-a96p.onrender.com/cartdata", user);
+                const response = await axios.post("https://e-commerce-backend-qr89.onrender.com/cartdata", user);
                 setState(response.data);
             } catch (error) {
                 console.log(error);
@@ -31,7 +31,7 @@ export default function Cart() {
         const decoded = jwtDecode(JWtoken.token);
         const data = { userId: decoded.userId, productId: id, quantity: 1, action: "addProductQuantity" };
         if (data.userId && data.productId) {
-            const response2 = await axios.post("https://e-commerce-backend-a96p.onrender.com/cart", data);
+            const response2 = await axios.post("https://e-commerce-backend-qr89.onrender.com/cart", data);
             if (response2.data === "Quantity Increased") {
                 Swal.fire({ title: 'Success', text: `Quantity of item has been increased`, icon: 'success', confirmButtonText: 'Ok' });
                 setCartUpdated(!cartUpdated);
@@ -44,7 +44,7 @@ export default function Cart() {
         const decoded = jwtDecode(JWtoken.token);
         const data = { userId: decoded.userId, productId: id, quantity: 1, action: "decreasequantity" };
         if (data.userId && data.productId) {
-            const response2 = await axios.post("https://e-commerce-backend-a96p.onrender.com/cart", data);
+            const response2 = await axios.post("https://e-commerce-backend-qr89.onrender.com/cart", data);
             if (response2.data === "Quantity Decreased") {
                 Swal.fire({ title: 'Success', text: `Quantity of item has been decreased`, icon: 'success', confirmButtonText: 'Ok' });
                 setCartUpdated(!cartUpdated);
@@ -59,7 +59,7 @@ export default function Cart() {
         const decoded = jwtDecode(JWtoken.token);
         const data = { userId: decoded.userId, productId: id, quantity: 1, action: "deleteItem" };
         if (data.userId && data.productId) {
-            const response2 = await axios.post("https://e-commerce-backend-a96p.onrender.com/cart", data);
+            const response2 = await axios.post("https://e-commerce-backend-qr89.onrender.com/cart", data);
             if (response2.data === "Item Deleted") {
                 Swal.fire({ title: 'Success', text: `Item successfully deleted`, icon: 'success', confirmButtonText: 'Ok' });
                 setCartUpdated(!cartUpdated);

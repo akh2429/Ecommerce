@@ -39,7 +39,7 @@ function Signup() {
         }),
         onSubmit: async (values) => {
             try {
-                const response = await axios.post("https://e-commerce-backend-a96p.onrender.com/register", values);
+                const response = await axios.post("https://e-commerce-backend-qr89.onrender.com/register", values);
                 if (response.data === "Signed Up sucessfully") {
                     formik.resetForm();
                     Swal.fire({ title: 'Sucessful', text: 'Successfully Signed up', icon: 'success', confirmButtonText: 'Ok' });
