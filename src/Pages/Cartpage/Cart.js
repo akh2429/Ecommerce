@@ -4,9 +4,9 @@ import jwtDecode from "jwt-decode";
 import Swal from "sweetalert2";
 
 export default function Cart() {
+
     const [state, setState] = useState();
     const [cartUpdated, setCartUpdated] = useState(false);
-
 
     const user = useMemo(() => {
         const JWtoken = JSON.parse(localStorage.getItem("user"));
