@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 function Signup() {
     const Navigate = useNavigate();
@@ -13,7 +13,7 @@ function Signup() {
     useEffect(() => {
         if (auth) {
             Navigate("/login");
-            Swal.fire({ title: 'Already SignedUp', text: 'You have already Signed Up', icon: 'error', confirmButtonText: 'Ok' });
+            toast.error('You have already Signed Up');
         }
     }, [Navigate, auth]);
 
@@ -44,7 +44,7 @@ function Signup() {
                 const response = await axios.post("https://e-commerce-backend-qr89.onrender.com/register", values);
                 if (response.data === "Signed Up sucessfully") {
                     formik.resetForm();
-                    Swal.fire({ title: 'Sucessful', text: 'Successfully Signed up', icon: 'success', confirmButtonText: 'Ok' });
+                    toast.success('Sucess fully signed Up');
                     Navigate("/login");
                 }
             } catch (error) {

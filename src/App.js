@@ -11,6 +11,9 @@ import Signup from "./Pages/Signup page/Signupage";
 import PrivateComponent from "./Components/PrivateComponent/privateComponent";
 import Cart from "./Pages/Cartpage/Cart";
 import Footer from "./Components/Footer/Footer";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
     <Provider store={store} >
@@ -27,6 +30,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
       </Routes >
       <Footer />
+      <ToastContainer position='bottom-left' />
     </Provider>
   )
 }

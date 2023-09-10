@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import Swal from "sweetalert2";
+import { toast } from 'react-toastify';
 
 function LoginPage() {
     const navigate = useNavigate();
@@ -34,20 +34,10 @@ function LoginPage() {
                 );
                 if (response.data.token) {
                     localStorage.setItem("user", JSON.stringify(response.data));
-                    Swal.fire({
-                        title: "Welcome",
-                        text: "Successfully Logged In",
-                        icon: "success",
-                        confirmButtonText: "Ok",
-                    });
+                    toast.success('Logged in Sucessfully');
                     navigate("/");
                 } else {
-                    Swal.fire({
-                        title: "Invalid Credentials",
-                        text: `${response.data.result}`,
-                        icon: "error",
-                        confirmButtonText: "Ok",
-                    });
+                    toast.error(`${response.data.result}`);
                 }
             } catch (error) {
                 console.log(error);

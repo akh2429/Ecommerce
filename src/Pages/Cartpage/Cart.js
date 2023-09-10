@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState, useMemo } from 'react';
 import jwtDecode from "jwt-decode";
-import Swal from "sweetalert2";
+import { toast } from 'react-toastify';
 
 export default function Cart() {
 
@@ -33,7 +33,7 @@ export default function Cart() {
         if (data.userId && data.productId) {
             const response2 = await axios.post("https://e-commerce-backend-qr89.onrender.com/cart", data);
             if (response2.data === "Quantity Increased") {
-                Swal.fire({ title: 'Success', text: `Quantity of item has been increased`, icon: 'success', confirmButtonText: 'Ok' });
+                toast.success(`Quantity of item has been increased`);
                 setCartUpdated(!cartUpdated);
             }
         }
@@ -46,10 +46,10 @@ export default function Cart() {
         if (data.userId && data.productId) {
             const response2 = await axios.post("https://e-commerce-backend-qr89.onrender.com/cart", data);
             if (response2.data === "Quantity Decreased") {
-                Swal.fire({ title: 'Success', text: `Quantity of item has been decreased`, icon: 'success', confirmButtonText: 'Ok' });
+                toast.success(`Quantity of item has been decreased`);
                 setCartUpdated(!cartUpdated);
             } else if (response2.data === "Quantity Can not be less than one") {
-                Swal.fire({ title: 'Error', text: `Quantity can not be less than one`, icon: 'error', confirmButtonText: 'Ok' });
+                toast.error(`Quantity can't be less than one`);
             }
         }
     }
@@ -61,7 +61,7 @@ export default function Cart() {
         if (data.userId && data.productId) {
             const response2 = await axios.post("https://e-commerce-backend-qr89.onrender.com/cart", data);
             if (response2.data === "Item Deleted") {
-                Swal.fire({ title: 'Success', text: `Item successfully deleted`, icon: 'success', confirmButtonText: 'Ok' });
+                toast.success(`Item sucessfully deleted`);
                 setCartUpdated(!cartUpdated);
             }
         }

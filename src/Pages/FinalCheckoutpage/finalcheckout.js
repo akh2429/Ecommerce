@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import RenderNestedObject from './RenderNestedObject';
 import jwtDecode from 'jwt-decode';
-import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 function FinalCheckout() {
     const [state, setState] = useState();
@@ -35,11 +35,11 @@ function FinalCheckout() {
         if (data.userId && data.productId) {
             const response2 = await axios.post('https://e-commerce-backend-qr89.onrender.com/cart', data);
             if (response2.data === 'Item Saved') {
-                Swal.fire({ title: 'Success', text: 'Item Saved to the cart', icon: 'success', confirmButtonText: 'Ok' });
+                toast.success('Item Saved to the cart');
             } else if (response2.data === 'Product Already Exist') {
-                Swal.fire({ title: 'Error', text: `${response2.data}`, icon: 'error', confirmButtonText: 'Ok' });
+                toast.error(`${response2.data}`);
             } else {
-                Swal.fire({ title: 'Error', text: 'Please try again', icon: 'error', confirmButtonText: 'Ok' });
+                toast.error('Please try again');
             }
         }
     }

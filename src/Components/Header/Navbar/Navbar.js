@@ -6,7 +6,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { RiLogoutBoxLine } from 'react-icons/ri';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import { toast } from 'react-toastify';
 
 function Navbar() {
 
@@ -17,7 +17,7 @@ function Navbar() {
     function logout() {
         localStorage.clear();
         Navigate("/login");
-        Swal.fire({ title: 'Success', text: `Successfully Logged Out`, icon: 'success', confirmButtonText: 'Ok' });
+        toast.success(`Successfully Logged Out`);
     }
 
     return (
