@@ -27,9 +27,9 @@ function LoginPage() {
         }),
         onSubmit: async (values) => {
             try {
-                setLoading(true); // Start the loading state
+                setLoading(true);
                 const response = await axios.post(
-                    "https://e-commerce-backend-qr89.onrender.com/login",
+                    "http://localhost:5050/login",
                     values
                 );
                 if (response.data.token) {
@@ -42,7 +42,7 @@ function LoginPage() {
             } catch (error) {
                 console.log(error);
             } finally {
-                setLoading(false); // End the loading state
+                setLoading(false);
             }
         },
     });

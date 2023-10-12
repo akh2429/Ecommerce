@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 function FinalCheckout() {
     const [state, setState] = useState();
-    const [loading, setLoading] = useState(true); // State variable for tracking loading state
+    const [loading, setLoading] = useState(true);
     const { search } = useLocation();
     const JWtoken = JSON.parse(localStorage.getItem('user'));
 
@@ -16,14 +16,41 @@ function FinalCheckout() {
     }, [search]);
 
     useEffect(() => {
+        async function sendData() {
+            try {
+                const decoded = jwtDecode(JWtoken.token);
+                const data = { userVisitId: decoded.visitId, productId: id._id };
+                const response = await axios.post("http://localhost:5050/uservisit", data);
+                console.log(response);
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+        sendData();
+    }, [])
+
+    async function buyNowHandler() {
+        try {
+            const decoded = jwtDecode(JWtoken.token);
+            const data = { userVisitId: decoded.visitId, productId: id._id };
+            const response = await axios.put("http://localhost:5050/mark-purchased", data);
+            console.log(response)
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
         async function fetchData() {
             try {
-                let response = await axios.post('https://e-commerce-backend-qr89.onrender.com/finalCheckout', id);
+                let response = await axios.post('http://localhost:5050/finalCheckout', id);
                 setState(response.data);
             } catch (error) {
                 console.log(error);
             } finally {
-                setLoading(false); // Set loading state to false when data fetching is complete
+                setLoading(false);
             }
         }
         fetchData();
@@ -33,7 +60,7 @@ function FinalCheckout() {
         const decoded = jwtDecode(JWtoken.token);
         const data = { userId: decoded.userId, productId: id, quantity: 1, action: 'addProduct' };
         if (data.userId && data.productId) {
-            const response2 = await axios.post('https://e-commerce-backend-qr89.onrender.com/cart', data);
+            const response2 = await axios.post('http://localhost:5050/cart', data);
             if (response2.data === 'Item Saved') {
                 toast.success('Item Saved to the cart');
             } else if (response2.data === 'Product Already Exist') {
@@ -62,12 +89,11 @@ function FinalCheckout() {
                         >
                             Add to Cart
                         </button>
-                        <Link
-                            to={'./paymentpage'}
-                            className="flex justify-center items-center bg-yellow-400 w-1/2 font-extrabold border border-black shadow-sm"
-                        >
-                            <button>Buy Now</button>
-                        </Link>
+                        <button
+                            onClick={buyNowHandler}
+                            className="flex justify-center items-center bg-yellow-400 w-1/2 font-extrabold border border-black shadow-sm">
+                            Buy Now
+                        </button>
                     </div>
                 </div>
                 <div className="flex flex-col h-max p-8 gap-2 items-start justify-start w-1/2 font-extrabold text-2xl capitalize border-2 border-black bg-orange-300 rounded-b-2xl sm:w-screen vsm:w-screen">
@@ -86,7 +112,7 @@ function FinalCheckout() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

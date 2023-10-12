@@ -5,17 +5,17 @@ import axios from "axios";
 
 function LandingPage() {
     const [state, setState] = useState([]);
-    const [loading, setLoading] = useState(true); // State variable for tracking loading state
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.post("https://e-commerce-backend-qr89.onrender.com/landingpage");
+                const response = await axios.post("http://localhost:5050/landingpage");
                 setState(response.data);
             } catch (error) {
                 console.log(error);
             } finally {
-                setLoading(false); // Set loading state to false when data fetching is complete
+                setLoading(false);
             }
         }
 

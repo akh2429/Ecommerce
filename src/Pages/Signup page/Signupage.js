@@ -41,15 +41,17 @@ function Signup() {
         onSubmit: async (values) => {
             try {
                 setLoading(true)
-                const response = await axios.post("https://e-commerce-backend-qr89.onrender.com/register", values);
-                if (response.data === "Signed Up sucessfully") {
+                const response = await axios.post("http://localhost:5050/register", values);
+                if (response.data === "Signed Up successfully") {
                     formik.resetForm();
-                    toast.success('Sucess fully signed Up');
+                    toast.success('Sucessfully signed Up');
                     Navigate("/login");
                 }
             } catch (error) {
-                console.log(error);
-                if (error.response.data.message) {
+                if (error.response.data.error) {
+                    toast.error('Email already Exist');
+                }
+                else if (error.response.data.message) {
                     const errorMessage = error.response.data.message;
                     const startIndex = errorMessage.indexOf(":") + 1;
                     const formattedErrorMessage = errorMessage.substring(startIndex).trim();

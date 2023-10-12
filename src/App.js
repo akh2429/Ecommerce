@@ -13,6 +13,7 @@ import Cart from "./Pages/Cartpage/Cart";
 import Footer from "./Components/Footer/Footer";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import UserVisit from "./Pages/userVisitPage/userVisit";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/finalCheckout" element={<FinalCheckout />} />
           <Route path="/ProductLanding" element={<ProductLanding />} />
           <Route path="/cartpage" element={<Cart />} />
+          <Route path="/userVisit" element={<UserVisit />} />
         </Route>
 
         <Route path="/signup" element={<Signup />} />
