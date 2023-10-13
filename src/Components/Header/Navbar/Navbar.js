@@ -26,10 +26,9 @@ function Navbar() {
 
             {/* Logo  */}
 
-            <Link to={"/userVisit"} >
+            {/* <Link to={"/userVisit"} >
                 UserVisit
-            </Link >
-
+            </Link > */}
 
             <div >
                 <Link to="/" className="font-bold text-red-600 shadow-md rounded-br-3xl border-2 border-white rounded-md p-2 sm:text-sm  vsm:text-xs  ">
